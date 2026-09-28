@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using ArchLens.Cli;
+using ArchLens.Core.Loading;
 using ArchLens.Core;
 using ArchLens.Core.Model;
 

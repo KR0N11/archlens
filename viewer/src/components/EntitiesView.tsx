@@ -33,11 +33,15 @@ export function EntitiesView({ graph, selectedId, onSelect }: Props) {
     <div className="split">
       <Canvas items={items} edges={edges} selectedId={selectedId} onNodeClick={onSelect} />
       <div className="crud">
-        <label className="toggle">
-          <input type="checkbox" checked={showUnsure} onChange={(e) => setShowUnsure(e.target.checked)} />
-          Show {unsureCount} unsure entities (score 2 to 4, not checked by the LLM)
-        </label>
-        <h3>Who reads and writes each entity</h3>
+        <div className="crud-head">
+          <h3>Who reads and writes each entity</h3>
+          {unsureCount > 0 && (
+            <label className="toggle">
+              <input type="checkbox" checked={showUnsure} onChange={(e) => setShowUnsure(e.target.checked)} />
+              Show {unsureCount} unsure entities on the canvas (score 2 to 4, not checked by the LLM)
+            </label>
+          )}
+        </div>
         {matrix.components.length === 0 ? (
           <p className="muted">No read or write arrows were found.</p>
         ) : (
@@ -60,7 +64,9 @@ export function EntitiesView({ graph, selectedId, onSelect }: Props) {
                   </td>
                   {matrix.components.map((c) => (
                     <td key={c.id} className="crud-cell">
-                      {matrix.cells[e.id]?.[c.id] ?? ''}
+                      {matrix.cells[e.id]?.[c.id] && (
+                        <span className={`pill pill-${matrix.cells[e.id][c.id]}`}>{matrix.cells[e.id][c.id]}</span>
+                      )}
                     </td>
                   ))}
                 </tr>

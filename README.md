@@ -11,18 +11,39 @@ and line that proves it.
 
 ## Quick start
 
-```bash
-# analyzer (.NET 10 SDK)
-dotnet test
-dotnet run --project src/ArchLens.Cli -- analyze github.com/dotnet/eShop --out eshop.json
-dotnet run --project src/ArchLens.Cli -- analyze ./path/to/local/repo --out graph.json
+Needs the .NET 10 SDK, Node 20+ and git.
 
-# viewer (Node 20+)
-cd viewer && npm install && npm run dev      # open the page, then drop graph.json on it
+```bash
+# terminal 1: the API (clones and analyzes repos), http://localhost:5080
+dotnet run --project src/ArchLens.Api
+
+# terminal 2: the viewer, http://localhost:5173
+cd viewer && npm install && npm run dev
 ```
 
-Options: `--include-tests` (test projects are skipped by default), `--max-depth N` (call flow depth, default 8),
+Open the viewer, paste a public GitHub URL (for example `github.com/dotnet/eShop`), and the graph is built on the
+spot. There's also a CLI that writes the same JSON to a file:
+
+```bash
+dotnet run --project src/ArchLens.Cli -- analyze github.com/dotnet/eShop --out eshop.json
+dotnet test
+```
+
+CLI options: `--include-tests` (test projects are skipped by default), `--max-depth N` (call flow depth, default 8),
 `--enrich` (LLM step, needs `ANTHROPIC_API_KEY`, see below).
+
+## The web API
+
+| Method | Path | Does |
+|---|---|---|
+| POST | `/api/analyses` | Body `{"repoUrl": "github.com/owner/name"}`. Queues a job, returns `202` with its id. Anything that isn't a public github.com repo is a `400`. |
+| GET | `/api/analyses/{id}` | Status (`queued`, `cloning`, `analyzing`, `done`, `failed`), a progress message, the commit, elapsed time. |
+| GET | `/api/analyses/{id}/graph` | The graph JSON once done (`409` before that). |
+
+A single background worker takes jobs off an in-process queue (`System.Threading.Channels`) one at a time: it
+asks GitHub for the latest commit (`git ls-remote`), serves the cached graph if that commit was already analyzed,
+otherwise shallow-clones, analyzes, caches and deletes the clone. The viewer polls the job every 700 ms. Jobs and
+the cache live in memory, so a restart clears them.
 
 ## How it works
 
@@ -80,10 +101,11 @@ not been graded yet. Two development samples (seed 1) were used to find bugs; se
 
 ## Tests
 
-- `tests/ArchLens.Tests` (xUnit, 53 tests): the SampleShop fixture (`samples/SampleShop`) is a small app written
+- `tests/ArchLens.Tests` (xUnit, 61 tests): the SampleShop fixture (`samples/SampleShop`) is a small app written
   for this. Its expected arrows, routes and entity scores are worked out by hand from its source and compared as
   sets, so an extra arrow fails the test as much as a missing one. Also: interface/DI/abstract/MediatR
-  resolution on tiny generated repos, Tarjan, the tracer, score caps, and the LLM step with a fake client.
+  resolution on tiny generated repos, Tarjan, the tracer, score caps, the LLM step with a fake client, and the
+  web API end to end in memory (a fake git source copies the fixture instead of cloning).
 - `viewer` (vitest, 29 tests): the pure logic in `viewer/src/lib`.
 
 ## Known limitations
@@ -97,8 +119,8 @@ not been graded yet. Two development samples (seed 1) were used to find bugs; se
 - The LLM step (`--enrich`) is unit tested with a fake client only. It has not yet been run against the live
   API. It uses the official Anthropic C# SDK with a JSON schema whose `type` field is an enum of the 10 box
   types; a refusal or cut-off answer keeps the rule's label.
-- C# only. The design doc's TypeScript support, Infrastructure view, web API with Postgres and job queue,
-  PNG/SVG export and CI score are not built. The CLI writes JSON and the viewer is a static page.
+- C# only. The design doc's TypeScript support, Infrastructure view, Postgres storage, Server-Sent Events
+  progress (the viewer polls instead), PNG/SVG export and CI score are not built. Jobs and the cache are in memory.
 
 ## Deliberate differences from the design doc
 

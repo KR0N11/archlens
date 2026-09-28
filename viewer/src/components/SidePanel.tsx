@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { displayName, githubLink, indexById } from '../lib/graph'
 import type { ArchGraph, Relationship } from '../lib/types'
-import { TYPE_LABEL } from './nodes'
+import { TypeGlyph, TYPE_LABEL } from './nodes'
 
 interface Props {
   graph: ArchGraph
@@ -61,7 +61,10 @@ export function SidePanel({ graph, id, onSelect, onClose }: Props) {
       <button className="close" onClick={onClose} aria-label="Close">
         ×
       </button>
-      <div className="muted">{TYPE_LABEL[el.type]} · {el.layer}</div>
+      <div className={`panel-kind t-${el.type}`}>
+        <TypeGlyph type={el.type} />
+        {TYPE_LABEL[el.type]} · {el.layer}
+      </div>
       <h2>{displayName(el, byId)}</h2>
       {el.route && <div className="route">{el.route}</div>}
       {el.purpose && <p className="purpose">{el.purpose}</p>}
@@ -94,7 +97,7 @@ export function SidePanel({ graph, id, onSelect, onClose }: Props) {
             <dt>Source</dt>
             <dd>
               {link ? (
-                <a href={link} target="_blank" rel="noreferrer">
+                <a className="mono" href={link} target="_blank" rel="noreferrer">
                   {el.source.file}:{el.source.line}
                 </a>
               ) : (

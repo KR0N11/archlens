@@ -8,6 +8,7 @@ import {
   dataEntitiesSubgraph,
   displayName,
   githubLink,
+  githubRepoUrl,
   indexById,
   liftEdges,
   overviewModel,
@@ -247,5 +248,14 @@ describe('searchElements', () => {
     expect(names[0]).toBe('Order')
     expect(names).toContain('OrderService')
     expect(searchElements(tinyGraph(), '  ')).toEqual([])
+  })
+})
+
+describe('githubRepoUrl', () => {
+  // The repo chip links to the exact commit that was analyzed; a local path gets no link.
+  it('links to the commit tree', () => {
+    expect(githubRepoUrl('github.com/dotnet/eShop', 'abc123')).toBe('https://github.com/dotnet/eShop/tree/abc123')
+    expect(githubRepoUrl('github.com/dotnet/eShop', undefined)).toBe('https://github.com/dotnet/eShop')
+    expect(githubRepoUrl('SampleShop', 'abc123')).toBeUndefined()
   })
 })

@@ -186,9 +186,19 @@ export function dataEntitiesSubgraph(graph: ArchGraph, includeUnsure = false) {
   return { elements, relationships }
 }
 
+const GITHUB_REPO = /^(?:https?:\/\/)?(?:www\.)?github\.com\/([^/]+)\/([^/]+?)(?:\.git)?\/?$/
+
+// The repo page at the analyzed commit (or the default branch when there is no commit).
+export function githubRepoUrl(repo: string, commit: string | undefined): string | undefined {
+  const match = GITHUB_REPO.exec(repo.trim())
+  if (!match) return undefined
+  const base = `https://github.com/${match[1]}/${match[2]}`
+  return commit ? `${base}/tree/${commit}` : base
+}
+
 // Only GitHub repos analyzed at a known commit get a link; a local path has nowhere to point.
 export function githubLink(repo: string, commit: string | undefined, source: SourceRef): string | undefined {
-  const match = /^(?:https?:\/\/)?(?:www\.)?github\.com\/([^/]+)\/([^/]+?)(?:\.git)?\/?$/.exec(repo.trim())
+  const match = GITHUB_REPO.exec(repo.trim())
   if (!match || !commit) return undefined
   const path = source.file
     .replace(/\\/g, '/')

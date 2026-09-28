@@ -5,6 +5,10 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
   base: './',
+  // In dev, /api goes to the ArchLens API (src/ArchLens.Api), so the page and the API share one origin.
+  server: {
+    proxy: { '/api': 'http://localhost:5080' },
+  },
   // elkjs ships as one ~1.4 MB file; splitting it would not make the first diagram appear sooner.
   build: { chunkSizeWarningLimit: 2500 },
 })

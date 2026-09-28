@@ -58,15 +58,19 @@ export async function layoutGraph(
     .filter((e) => known.has(e.source) && known.has(e.target))
     .map((e) => ({ id: e.id, sources: [e.source], targets: [e.target] }))
 
+  const nested = nodes.some((n) => n.parent)
   const result = await elk.layout({
     id: 'root',
-    // INCLUDE_CHILDREN lets one layout pass route arrows that cross into nested boxes.
     layoutOptions: {
       'elk.algorithm': 'layered',
       'elk.direction': direction,
-      'elk.hierarchyHandling': 'INCLUDE_CHILDREN',
-      'elk.layered.spacing.nodeNodeBetweenLayers': '60',
-      'elk.spacing.nodeNode': '30',
+      'elk.layered.spacing.nodeNodeBetweenLayers': '64',
+      'elk.spacing.nodeNode': '32',
+      'elk.spacing.componentComponent': '48',
+      // INCLUDE_CHILDREN lets one pass route arrows into nested boxes, but it also stops ELK from
+      // wrapping unconnected boxes into rows. So it is only on when something is actually nested;
+      // otherwise the aspect ratio wraps a 19-project repo into a block instead of one long line.
+      ...(nested ? { 'elk.hierarchyHandling': 'INCLUDE_CHILDREN' } : { 'elk.aspectRatio': '1.6' }),
     },
     children: roots,
     edges: elkEdges,

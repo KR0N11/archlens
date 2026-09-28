@@ -76,12 +76,23 @@ the rules were unsure about, never draw arrows. I ran it on Microsoft's eShop: 1
 - ArchiMate draws Serving from provider to consumer. I store call direction because call flows read top down.
   It's a deliberate deviation, and it's listed in the README.
 
+**9. The web API: queue + one worker + polling.**
+- Say this: "POST returns right away with a job id; one background worker clones and analyzes jobs one at a
+  time from an in-process queue, and the page polls the job every 700 ms. Before cloning I ask GitHub for the
+  latest commit with `git ls-remote`, so an unchanged repo comes straight from the cache."
+- Why not the alternative: Server-Sent Events push progress instead of polling, but polling is one fetch in a
+  loop and a job only has four steps. Postgres (in the design doc) makes sense once there's more than one user.
+- They'll ask: "Is it safe to clone whatever someone pastes?" Only `github.com/owner/repo` URLs are accepted,
+  git runs with prompts off and a 3-minute timeout, and the clone is deleted after analysis. It's still a local
+  tool; putting it on the internet would also need rate limits and a repo size cap.
+- They'll ask: "Why one worker?" Roslyn holds a whole repo in memory. One at a time keeps memory predictable.
+
 ## Numbers and where each comes from
 
 | Claim | Source |
 |---|---|
 | eShop: 19 projects, 1,064 boxes, 613 arrows, 50 entry points, 2.9 s | CLI output, `eval/dotnet_eShop.json`, commit `b4a4087` |
-| 53 C# tests, 29 viewer tests | `dotnet test`, `npm test` |
+| 61 C# tests (incl. API), viewer tests | `dotnet test`, `npm test` |
 | Precision | **Not claimed yet.** Grade `eval/eshop-edge-check.md` (30 held-out arrows) first |
 
 ## Bugs found by running on real repos (good interview stories)
@@ -97,5 +108,5 @@ the rules were unsure about, never draw arrows. I ran it on Microsoft's eShop: 1
 
 ## What you did NOT build (say it before they find it)
 
-TypeScript support, the Infrastructure view, the web API with Postgres, the job queue and SSE progress,
-PNG/SVG export, and the CI score. The CLI writes JSON, and the viewer is a static React page that reads it.
+TypeScript support, the Infrastructure view, Postgres storage, SSE progress (it polls), PNG/SVG export,
+and the CI score. Jobs and the cache are in memory.

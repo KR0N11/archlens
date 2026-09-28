@@ -1,11 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { CallFlowView } from './components/CallFlowView'
 import { EntitiesView } from './components/EntitiesView'
+import { Landing, LogoMark, type Example } from './components/Landing'
 import { OverviewView } from './components/OverviewView'
+import { Progress } from './components/Progress'
 import { ScoreView } from './components/ScoreView'
 import { Search } from './components/Search'
 import { SidePanel } from './components/SidePanel'
-import { parseGraph } from './lib/graph'
+import { useAnalysis } from './components/useAnalysis'
+import { apiIsUp, normalizeRepoUrl } from './lib/api'
+import { githubRepoUrl, parseGraph } from './lib/graph'
 import type { ArchGraph } from './lib/types'
 
 type Tab = 'overview' | 'entities' | 'callflow' | 'score'
@@ -17,37 +21,57 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'score', label: 'Score' },
 ]
 
-interface Example {
-  name: string
-  file: string
+const examplesUrl = (file: string) => `${import.meta.env.BASE_URL}examples/${file}`
+
+// ?repo=owner/name keeps the current repo in the address bar, so a refresh or a shared
+// link runs the same analysis again (the server's cache makes the rerun fast).
+function repoFromUrl(): string | null {
+  const repo = new URLSearchParams(window.location.search).get('repo')
+  return repo ? normalizeRepoUrl(`github.com/${repo}`) : null
 }
 
-const examplesUrl = (file: string) => `${import.meta.env.BASE_URL}examples/${file}`
+function setRepoInUrl(repo: string | null) {
+  const url = new URL(window.location.href)
+  if (repo) url.searchParams.set('repo', repo.replace(/^github\.com\//, ''))
+  else url.searchParams.delete('repo')
+  window.history.replaceState(null, '', url)
+}
 
 export default function App() {
   const [graph, setGraph] = useState<ArchGraph | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [examples, setExamples] = useState<Example[]>([])
+  const [apiUp, setApiUp] = useState<boolean | null>(null)
   const [tab, setTab] = useState<Tab>('overview')
   const [selectedId, setSelectedId] = useState<string | undefined>()
   // Bumped on every load so each view starts fresh (no expanded boxes left over from the last graph).
   const [loadCount, setLoadCount] = useState(0)
 
-  const show = (raw: unknown) => {
+  const show = useCallback((raw: unknown) => {
     try {
       setGraph(parseGraph(raw))
       setLoadCount((n) => n + 1)
       setSelectedId(undefined)
+      setTab('overview')
       setError(null)
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e))
     }
+  }, [])
+
+  const { state: run, start, cancel } = useAnalysis(show)
+
+  const analyze = (repo: string) => {
+    setError(null)
+    setRepoInUrl(repo)
+    void start(repo)
   }
 
   const loadExample = async (file: string) => {
     try {
       const res = await fetch(examplesUrl(file))
       if (!res.ok) throw new Error(`Could not load ${file} (HTTP ${res.status}).`)
+      setRepoInUrl(null)
       show(await res.json())
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e))
@@ -56,21 +80,37 @@ export default function App() {
 
   const loadFile = async (file: File) => {
     try {
-      show(JSON.parse(await file.text()))
+      const raw = JSON.parse(await file.text())
+      setRepoInUrl(null)
+      show(raw)
     } catch (e) {
       setError(`${file.name}: ${e instanceof Error ? e.message : String(e)}`)
     }
   }
 
-  // Open the first bundled example so a first-time visitor sees a diagram right away.
+  const newAnalysis = () => {
+    cancel()
+    setGraph(null)
+    setSelectedId(undefined)
+    setError(null)
+    setRepoInUrl(null)
+  }
+
+  // React's dev mode runs start-up effects twice; this makes sure ?repo= only starts one analysis.
+  const autoStarted = useRef(false)
+
+  // On start: list the examples (nothing is opened), check the API, and rerun ?repo= if present.
   useEffect(() => {
     fetch(examplesUrl('index.json'))
       .then((r) => (r.ok ? r.json() : []))
-      .then((list: Example[]) => {
-        setExamples(list)
-        if (list[0]) void loadExample(list[0].file)
-      })
+      .then((list: Example[]) => setExamples(list))
       .catch(() => setExamples([]))
+    void apiIsUp().then(setApiUp)
+    const repo = repoFromUrl()
+    if (repo && !autoStarted.current) {
+      autoStarted.current = true
+      void start(repo)
+    }
     // Runs once on start.
   }, [])
 
@@ -85,6 +125,39 @@ export default function App() {
     URL.revokeObjectURL(url)
   }
 
+  const repoLink = graph ? githubRepoUrl(graph.repo, graph.commit) : undefined
+
+  let body
+  if (run.phase !== 'idle') {
+    body = <Progress state={run} onCancel={newAnalysis} onRetry={() => analyze(run.repo)} />
+  } else if (!graph) {
+    body = (
+      <Landing
+        examples={examples}
+        apiUp={apiUp}
+        initialRepo={repoFromUrl() ?? undefined}
+        error={error ?? undefined}
+        onAnalyze={analyze}
+        onExample={(file) => void loadExample(file)}
+        onFile={(file) => void loadFile(file)}
+      />
+    )
+  } else {
+    body = (
+      <main className="main">
+        <section className="view" key={loadCount}>
+          {tab === 'overview' && <OverviewView graph={graph} selectedId={selectedId} onSelect={setSelectedId} />}
+          {tab === 'entities' && <EntitiesView graph={graph} selectedId={selectedId} onSelect={setSelectedId} />}
+          {tab === 'callflow' && <CallFlowView graph={graph} selectedId={selectedId} onSelect={setSelectedId} />}
+          {tab === 'score' && <ScoreView graph={graph} onSelect={setSelectedId} />}
+        </section>
+        {selectedId && (
+          <SidePanel graph={graph} id={selectedId} onSelect={setSelectedId} onClose={() => setSelectedId(undefined)} />
+        )}
+      </main>
+    )
+  }
+
   return (
     <div
       className="app"
@@ -96,74 +169,44 @@ export default function App() {
       }}
     >
       <header className="topbar">
-        <strong className="brand">ArchLens</strong>
-        {examples.length > 0 && (
-          <select defaultValue="" onChange={(e) => e.target.value && void loadExample(e.target.value)}>
-            <option value="" disabled>
-              Examples…
-            </option>
-            {examples.map((x) => (
-              <option key={x.file} value={x.file}>
-                {x.name}
-              </option>
-            ))}
-          </select>
-        )}
-        <label className="file-button">
-          Open graph JSON
-          <input
-            type="file"
-            accept=".json,application/json"
-            onChange={(e) => {
-              const file = e.target.files?.[0]
-              if (file) void loadFile(file)
-              e.target.value = ''
-            }}
-          />
-        </label>
-        <button onClick={exportJson} disabled={!graph}>
-          Export JSON
+        <button className="brand" onClick={newAnalysis} title="Back to the start">
+          <LogoMark />
+          <span>ArchLens</span>
         </button>
-        {graph && <Search graph={graph} onSelect={setSelectedId} />}
-        {graph && (
-          <span className="muted repo">
-            {graph.repo}
-            {graph.commit && ` @ ${graph.commit.slice(0, 7)}`} · {graph.elements.length} boxes,{' '}
-            {graph.relationships.length} arrows
-          </span>
+        {graph && run.phase === 'idle' && (
+          <>
+            <a className="repo-chip" href={repoLink} target="_blank" rel="noreferrer" aria-disabled={!repoLink}>
+              <span>{graph.repo}</span>
+              {graph.commit && <code>{graph.commit.slice(0, 7)}</code>}
+            </a>
+            <span className="counts">
+              {graph.elements.length.toLocaleString()} boxes · {graph.relationships.length.toLocaleString()} arrows
+            </span>
+            <nav className="segmented">
+              {TABS.map((t) => (
+                <button key={t.id} className={t.id === tab ? 'active' : ''} onClick={() => setTab(t.id)}>
+                  {t.label}
+                </button>
+              ))}
+            </nav>
+            <div className="topbar-right">
+              <Search graph={graph} onSelect={setSelectedId} />
+              <button onClick={exportJson}>Export JSON</button>
+              <button className="primary" onClick={newAnalysis}>
+                New analysis
+              </button>
+            </div>
+          </>
         )}
       </header>
 
-      {error && (
+      {error && graph && (
         <div className="error" role="alert">
-          {error} <button onClick={() => setError(null)}>dismiss</button>
+          {error} <button onClick={() => setError(null)}>Dismiss</button>
         </div>
       )}
 
-      {!graph ? (
-        <div className="empty">Drop an ArchLens graph JSON here, or open one above.</div>
-      ) : (
-        <>
-          <nav className="tabs">
-            {TABS.map((t) => (
-              <button key={t.id} className={t.id === tab ? 'active' : ''} onClick={() => setTab(t.id)}>
-                {t.label}
-              </button>
-            ))}
-          </nav>
-          <main className="main">
-            <section className="view" key={loadCount}>
-              {tab === 'overview' && <OverviewView graph={graph} selectedId={selectedId} onSelect={setSelectedId} />}
-              {tab === 'entities' && <EntitiesView graph={graph} selectedId={selectedId} onSelect={setSelectedId} />}
-              {tab === 'callflow' && <CallFlowView graph={graph} selectedId={selectedId} onSelect={setSelectedId} />}
-              {tab === 'score' && <ScoreView graph={graph} onSelect={setSelectedId} />}
-            </section>
-            {selectedId && (
-              <SidePanel graph={graph} id={selectedId} onSelect={setSelectedId} onClose={() => setSelectedId(undefined)} />
-            )}
-          </main>
-        </>
-      )}
+      {body}
     </div>
   )
 }
