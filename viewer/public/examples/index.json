@@ -1,0 +1,6 @@
+[
+  { "name": "dotnet/eShop (19 projects)", "file": "eshop.json" },
+  { "name": "jasontaylordev/CleanArchitecture", "file": "cleanarchitecture.json" },
+  { "name": "dotnet-architecture/eShopOnWeb", "file": "eshoponweb.json" },
+  { "name": "SampleShop (test fixture)", "file": "sample.json" }
+]

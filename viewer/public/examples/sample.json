@@ -1,0 +1,920 @@
+{
+  "repo": "SampleShop",
+  "analyzedAt": "2026-09-28T16:15:11.427725Z",
+  "elements": [
+    {
+      "id": "cmp:SampleShop.Data",
+      "type": "ApplicationComponent",
+      "layer": "Application",
+      "name": "SampleShop.Data",
+      "source": {
+        "file": "SampleShop.Data/SampleShop.Data.csproj",
+        "line": 1
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cmp:SampleShop.Api",
+      "type": "ApplicationComponent",
+      "layer": "Application",
+      "name": "SampleShop.Api",
+      "source": {
+        "file": "SampleShop.Api/SampleShop.Api.csproj",
+        "line": 1
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:SampleShop.Api.Clients.PricingClient",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "PricingClient",
+      "parent": "cmp:SampleShop.Api",
+      "source": {
+        "file": "SampleShop.Api/Clients/PricingClient.cs",
+        "line": 6
+      },
+      "confidence": 0.9,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:SampleShop.Api.Clients.PricingClient.GetQuote",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "PricingClient.GetQuote",
+      "parent": "cls:SampleShop.Api.Clients.PricingClient",
+      "source": {
+        "file": "SampleShop.Api/Clients/PricingClient.cs",
+        "line": 15
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:SampleShop.Api.Contracts.CreateOrderRequest",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "CreateOrderRequest",
+      "parent": "cmp:SampleShop.Api",
+      "source": {
+        "file": "SampleShop.Api/Contracts/Contracts.cs",
+        "line": 9
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityKind": "Dto",
+      "entityScore": 4,
+      "entitySignals": [
+        "Serialized over the wire \u002B2",
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "ProductId",
+          "type": "int"
+        },
+        {
+          "name": "CustomerName",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "id": "do:SampleShop.Api.Contracts.OrderDto",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "OrderDto",
+      "parent": "cmp:SampleShop.Api",
+      "source": {
+        "file": "SampleShop.Api/Contracts/Contracts.cs",
+        "line": 3
+      },
+      "confidence": 1,
+      "origin": "Rule",
+      "entityKind": "Dto",
+      "entityScore": 5,
+      "entitySignals": [
+        "Serialized over the wire \u002B2",
+        "Mostly properties \u002B2",
+        "Data name suffix \u002B1"
+      ],
+      "fields": [
+        {
+          "name": "Id",
+          "type": "int"
+        },
+        {
+          "name": "CustomerName",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "id": "do:SampleShop.Api.Contracts.PriceQuote",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "PriceQuote",
+      "parent": "cmp:SampleShop.Api",
+      "source": {
+        "file": "SampleShop.Api/Contracts/Contracts.cs",
+        "line": 15
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityKind": "External",
+      "entityScore": 4,
+      "entitySignals": [
+        "Serialized over the wire \u002B2",
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "ProductId",
+          "type": "int"
+        },
+        {
+          "name": "Price",
+          "type": "decimal"
+        }
+      ]
+    },
+    {
+      "id": "cls:SampleShop.Api.Controllers.OrdersController",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "OrdersController",
+      "parent": "cmp:SampleShop.Api",
+      "source": {
+        "file": "SampleShop.Api/Controllers/OrdersController.cs",
+        "line": 10
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:SampleShop.Api.Endpoints.CatalogEndpoints",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "CatalogEndpoints",
+      "parent": "cmp:SampleShop.Api",
+      "source": {
+        "file": "SampleShop.Api/Endpoints/CatalogEndpoints.cs",
+        "line": 6
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:SampleShop.Api.Endpoints.CatalogEndpoints.MapCatalog",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "CatalogEndpoints.MapCatalog",
+      "parent": "cls:SampleShop.Api.Endpoints.CatalogEndpoints",
+      "source": {
+        "file": "SampleShop.Api/Endpoints/CatalogEndpoints.cs",
+        "line": 8
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:SampleShop.Api.Endpoints.CatalogEndpoints.GetItems",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "CatalogEndpoints.GetItems",
+      "parent": "cls:SampleShop.Api.Endpoints.CatalogEndpoints",
+      "source": {
+        "file": "SampleShop.Api/Endpoints/CatalogEndpoints.cs",
+        "line": 19
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:SampleShop.Api.Helpers.Tick",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "Tick",
+      "parent": "cmp:SampleShop.Api",
+      "source": {
+        "file": "SampleShop.Api/Helpers/Cycle.cs",
+        "line": 4
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:SampleShop.Api.Helpers.Tick.Hit",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "Tick.Hit",
+      "parent": "cls:SampleShop.Api.Helpers.Tick",
+      "source": {
+        "file": "SampleShop.Api/Helpers/Cycle.cs",
+        "line": 6
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:SampleShop.Api.Helpers.Tock",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "Tock",
+      "parent": "cmp:SampleShop.Api",
+      "source": {
+        "file": "SampleShop.Api/Helpers/Cycle.cs",
+        "line": 12
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:SampleShop.Api.Helpers.Tock.Hit",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "Tock.Hit",
+      "parent": "cls:SampleShop.Api.Helpers.Tock",
+      "source": {
+        "file": "SampleShop.Api/Helpers/Cycle.cs",
+        "line": 14
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:SampleShop.Api.Services.LegacyOrderService",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "LegacyOrderService",
+      "parent": "cmp:SampleShop.Api",
+      "source": {
+        "file": "SampleShop.Api/Services/LegacyOrderService.cs",
+        "line": 6
+      },
+      "confidence": 0.9,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:SampleShop.Api.Services.LegacyOrderService.GetOpenOrders",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "LegacyOrderService.GetOpenOrders",
+      "parent": "cls:SampleShop.Api.Services.LegacyOrderService",
+      "source": {
+        "file": "SampleShop.Api/Services/LegacyOrderService.cs",
+        "line": 8
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:SampleShop.Api.Services.LegacyOrderService.PlaceOrder",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "LegacyOrderService.PlaceOrder",
+      "parent": "cls:SampleShop.Api.Services.LegacyOrderService",
+      "source": {
+        "file": "SampleShop.Api/Services/LegacyOrderService.cs",
+        "line": 13
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:SampleShop.Api.Services.OrderService",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "OrderService",
+      "parent": "cmp:SampleShop.Api",
+      "source": {
+        "file": "SampleShop.Api/Services/OrderService.cs",
+        "line": 8
+      },
+      "confidence": 0.9,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:SampleShop.Api.Services.OrderService.GetOpenOrders",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "OrderService.GetOpenOrders",
+      "parent": "cls:SampleShop.Api.Services.OrderService",
+      "source": {
+        "file": "SampleShop.Api/Services/OrderService.cs",
+        "line": 19
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:SampleShop.Api.Services.OrderService.PlaceOrder",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "OrderService.PlaceOrder",
+      "parent": "cls:SampleShop.Api.Services.OrderService",
+      "source": {
+        "file": "SampleShop.Api/Services/OrderService.cs",
+        "line": 25
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:SampleShop.Api.Services.OrderService.CloseOrder",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "OrderService.CloseOrder",
+      "parent": "cls:SampleShop.Api.Services.OrderService",
+      "source": {
+        "file": "SampleShop.Api/Services/OrderService.cs",
+        "line": 35
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:SampleShop.Api.Services.OrderService.ToDto",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "OrderService.ToDto",
+      "parent": "cls:SampleShop.Api.Services.OrderService",
+      "source": {
+        "file": "SampleShop.Api/Services/OrderService.cs",
+        "line": 41
+      },
+      "confidence": 1,
+      "origin": "Rule",
+      "isPrivate": true
+    },
+    {
+      "id": "fn:SampleShop.Api.Services.OrderService.NeverCalled",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "OrderService.NeverCalled",
+      "parent": "cls:SampleShop.Api.Services.OrderService",
+      "source": {
+        "file": "SampleShop.Api/Services/OrderService.cs",
+        "line": 46
+      },
+      "confidence": 1,
+      "origin": "Rule",
+      "isPrivate": true
+    },
+    {
+      "id": "do:SampleShop.Data.Entities.Order",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "Order",
+      "parent": "cmp:SampleShop.Data",
+      "source": {
+        "file": "SampleShop.Data/Entities/Order.cs",
+        "line": 3
+      },
+      "confidence": 1,
+      "origin": "Rule",
+      "entityKind": "Stored",
+      "entityScore": 7,
+      "entitySignals": [
+        "ORM mapping \u002B5",
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Id",
+          "type": "int"
+        },
+        {
+          "name": "CustomerName",
+          "type": "string"
+        },
+        {
+          "name": "IsOpen",
+          "type": "bool"
+        },
+        {
+          "name": "Lines",
+          "type": "List\u003COrderLine\u003E"
+        }
+      ]
+    },
+    {
+      "id": "do:SampleShop.Data.Entities.OrderLine",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "OrderLine",
+      "parent": "cmp:SampleShop.Data",
+      "source": {
+        "file": "SampleShop.Data/Entities/OrderLine.cs",
+        "line": 3
+      },
+      "confidence": 1,
+      "origin": "Rule",
+      "entityKind": "Stored",
+      "entityScore": 7,
+      "entitySignals": [
+        "Schema file match \u002B5",
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Id",
+          "type": "int"
+        },
+        {
+          "name": "ProductId",
+          "type": "int"
+        },
+        {
+          "name": "Quantity",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "id": "do:SampleShop.Data.Entities.Product",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "Product",
+      "parent": "cmp:SampleShop.Data",
+      "source": {
+        "file": "SampleShop.Data/Entities/Product.cs",
+        "line": 3
+      },
+      "confidence": 1,
+      "origin": "Rule",
+      "entityKind": "Stored",
+      "entityScore": 9,
+      "entitySignals": [
+        "ORM mapping \u002B5",
+        "Serialized over the wire \u002B2",
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Id",
+          "type": "int"
+        },
+        {
+          "name": "Name",
+          "type": "string"
+        },
+        {
+          "name": "Price",
+          "type": "decimal"
+        }
+      ]
+    },
+    {
+      "id": "do:SampleShop.Data.ShippingOptions",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "ShippingOptions",
+      "parent": "cmp:SampleShop.Data",
+      "source": {
+        "file": "SampleShop.Data/ShippingOptions.cs",
+        "line": 4
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 2,
+      "entitySignals": [
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Carrier",
+          "type": "string"
+        },
+        {
+          "name": "MaxDays",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "id": "cls:SampleShop.Data.ShopDbContext",
+      "type": "TechnologyService",
+      "layer": "Technology",
+      "name": "ShopDbContext",
+      "parent": "cmp:SampleShop.Data",
+      "source": {
+        "file": "SampleShop.Data/ShopDbContext.cs",
+        "line": 6
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:GET api/catalog/items",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "GET api/catalog/items",
+      "parent": "cls:SampleShop.Api.Endpoints.CatalogEndpoints",
+      "source": {
+        "file": "SampleShop.Api/Endpoints/CatalogEndpoints.cs",
+        "line": 11
+      },
+      "route": "GET api/catalog/items",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:POST api/catalog/items",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "POST api/catalog/items",
+      "parent": "cls:SampleShop.Api.Endpoints.CatalogEndpoints",
+      "source": {
+        "file": "SampleShop.Api/Endpoints/CatalogEndpoints.cs",
+        "line": 12
+      },
+      "route": "POST api/catalog/items",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:GET api/orders",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "OrdersController.Get",
+      "parent": "cls:SampleShop.Api.Controllers.OrdersController",
+      "source": {
+        "file": "SampleShop.Api/Controllers/OrdersController.cs",
+        "line": 22
+      },
+      "route": "GET api/orders",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:POST api/orders",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "OrdersController.Create",
+      "parent": "cls:SampleShop.Api.Controllers.OrdersController",
+      "source": {
+        "file": "SampleShop.Api/Controllers/OrdersController.cs",
+        "line": 28
+      },
+      "route": "POST api/orders",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:GET api/orders/count",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "OrdersController.Count",
+      "parent": "cls:SampleShop.Api.Controllers.OrdersController",
+      "source": {
+        "file": "SampleShop.Api/Controllers/OrdersController.cs",
+        "line": 35
+      },
+      "route": "GET api/orders/count",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "ext:pricing.example.com",
+      "type": "ExternalSystem",
+      "layer": "Application",
+      "name": "pricing.example.com",
+      "source": {
+        "file": "SampleShop.Api/Clients/PricingClient.cs",
+        "line": 17
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel:1",
+      "type": "Serving",
+      "from": "api:GET api/catalog/items",
+      "to": "fn:SampleShop.Api.Endpoints.CatalogEndpoints.GetItems",
+      "evidence": {
+        "file": "SampleShop.Api/Endpoints/CatalogEndpoints.cs",
+        "line": 11
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:2",
+      "type": "Flow",
+      "from": "fn:SampleShop.Api.Clients.PricingClient.GetQuote",
+      "to": "ext:pricing.example.com",
+      "evidence": {
+        "file": "SampleShop.Api/Clients/PricingClient.cs",
+        "line": 17
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:3",
+      "type": "Access",
+      "from": "fn:SampleShop.Api.Clients.PricingClient.GetQuote",
+      "to": "do:SampleShop.Api.Contracts.PriceQuote",
+      "evidence": {
+        "file": "SampleShop.Api/Clients/PricingClient.cs",
+        "line": 17
+      },
+      "access": "Read",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:4",
+      "type": "Access",
+      "from": "fn:SampleShop.Api.Endpoints.CatalogEndpoints.GetItems",
+      "to": "do:SampleShop.Data.Entities.Product",
+      "evidence": {
+        "file": "SampleShop.Api/Endpoints/CatalogEndpoints.cs",
+        "line": 21
+      },
+      "access": "Read",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:5",
+      "type": "Serving",
+      "from": "fn:SampleShop.Api.Helpers.Tick.Hit",
+      "to": "fn:SampleShop.Api.Helpers.Tock.Hit",
+      "evidence": {
+        "file": "SampleShop.Api/Helpers/Cycle.cs",
+        "line": 8
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:6",
+      "type": "Serving",
+      "from": "fn:SampleShop.Api.Helpers.Tock.Hit",
+      "to": "fn:SampleShop.Api.Helpers.Tick.Hit",
+      "evidence": {
+        "file": "SampleShop.Api/Helpers/Cycle.cs",
+        "line": 16
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:7",
+      "type": "Access",
+      "from": "fn:SampleShop.Api.Services.OrderService.GetOpenOrders",
+      "to": "do:SampleShop.Data.Entities.Order",
+      "evidence": {
+        "file": "SampleShop.Api/Services/OrderService.cs",
+        "line": 21
+      },
+      "access": "Read",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:8",
+      "type": "Serving",
+      "from": "fn:SampleShop.Api.Services.OrderService.GetOpenOrders",
+      "to": "fn:SampleShop.Api.Services.OrderService.ToDto",
+      "evidence": {
+        "file": "SampleShop.Api/Services/OrderService.cs",
+        "line": 22
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:9",
+      "type": "Serving",
+      "from": "fn:SampleShop.Api.Services.OrderService.PlaceOrder",
+      "to": "fn:SampleShop.Api.Clients.PricingClient.GetQuote",
+      "evidence": {
+        "file": "SampleShop.Api/Services/OrderService.cs",
+        "line": 27
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:10",
+      "type": "Access",
+      "from": "fn:SampleShop.Api.Services.OrderService.PlaceOrder",
+      "to": "do:SampleShop.Data.Entities.Order",
+      "evidence": {
+        "file": "SampleShop.Api/Services/OrderService.cs",
+        "line": 29
+      },
+      "access": "Write",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:11",
+      "type": "Serving",
+      "from": "fn:SampleShop.Api.Services.OrderService.PlaceOrder",
+      "to": "fn:SampleShop.Api.Services.OrderService.ToDto",
+      "evidence": {
+        "file": "SampleShop.Api/Services/OrderService.cs",
+        "line": 31
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:12",
+      "type": "Access",
+      "from": "fn:SampleShop.Api.Services.OrderService.CloseOrder",
+      "to": "do:SampleShop.Data.Entities.Order",
+      "evidence": {
+        "file": "SampleShop.Api/Services/OrderService.cs",
+        "line": 37
+      },
+      "access": "Write",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:13",
+      "type": "Access",
+      "from": "api:POST api/catalog/items",
+      "to": "do:SampleShop.Data.Entities.Product",
+      "evidence": {
+        "file": "SampleShop.Api/Endpoints/CatalogEndpoints.cs",
+        "line": 14
+      },
+      "access": "Write",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:14",
+      "type": "Serving",
+      "from": "api:GET api/orders",
+      "to": "fn:SampleShop.Api.Services.OrderService.GetOpenOrders",
+      "evidence": {
+        "file": "SampleShop.Api/Controllers/OrdersController.cs",
+        "line": 24
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:15",
+      "type": "Serving",
+      "from": "api:POST api/orders",
+      "to": "fn:SampleShop.Api.Services.OrderService.PlaceOrder",
+      "evidence": {
+        "file": "SampleShop.Api/Controllers/OrdersController.cs",
+        "line": 30
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:16",
+      "type": "Access",
+      "from": "api:GET api/orders/count",
+      "to": "do:SampleShop.Data.Entities.Order",
+      "evidence": {
+        "file": "SampleShop.Api/Controllers/OrdersController.cs",
+        "line": 37
+      },
+      "access": "Read",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:17",
+      "type": "Aggregation",
+      "from": "do:SampleShop.Data.Entities.Order",
+      "to": "do:SampleShop.Data.Entities.OrderLine",
+      "evidence": {
+        "file": "SampleShop.Data/Entities/Order.cs",
+        "line": 8
+      },
+      "confidence": 1,
+      "origin": "Static"
+    }
+  ],
+  "views": {
+    "callFlow:api:GET api/catalog/items": {
+      "elements": [
+        "api:GET api/catalog/items",
+        "fn:SampleShop.Api.Endpoints.CatalogEndpoints.GetItems",
+        "do:SampleShop.Data.Entities.Product"
+      ],
+      "relationships": [
+        "rel:1",
+        "rel:4"
+      ]
+    },
+    "callFlow:api:POST api/catalog/items": {
+      "elements": [
+        "api:POST api/catalog/items",
+        "do:SampleShop.Data.Entities.Product"
+      ],
+      "relationships": [
+        "rel:13"
+      ]
+    },
+    "callFlow:api:GET api/orders": {
+      "elements": [
+        "api:GET api/orders",
+        "fn:SampleShop.Api.Services.OrderService.GetOpenOrders",
+        "do:SampleShop.Data.Entities.Order",
+        "fn:SampleShop.Api.Services.OrderService.ToDto"
+      ],
+      "relationships": [
+        "rel:14",
+        "rel:7",
+        "rel:8"
+      ]
+    },
+    "callFlow:api:POST api/orders": {
+      "elements": [
+        "api:POST api/orders",
+        "fn:SampleShop.Api.Services.OrderService.PlaceOrder",
+        "fn:SampleShop.Api.Clients.PricingClient.GetQuote",
+        "ext:pricing.example.com",
+        "do:SampleShop.Api.Contracts.PriceQuote",
+        "do:SampleShop.Data.Entities.Order",
+        "fn:SampleShop.Api.Services.OrderService.ToDto"
+      ],
+      "relationships": [
+        "rel:15",
+        "rel:9",
+        "rel:2",
+        "rel:3",
+        "rel:10",
+        "rel:11"
+      ]
+    },
+    "callFlow:api:GET api/orders/count": {
+      "elements": [
+        "api:GET api/orders/count",
+        "do:SampleShop.Data.Entities.Order"
+      ],
+      "relationships": [
+        "rel:16"
+      ]
+    }
+  },
+  "score": {
+    "total": 79,
+    "checks": [
+      {
+        "check": "Circular dependency",
+        "message": "2 classes call each other in a loop: Tick -\u003E Tock",
+        "penalty": 10,
+        "elements": [
+          "cls:SampleShop.Api.Helpers.Tick",
+          "cls:SampleShop.Api.Helpers.Tock"
+        ],
+        "relationships": [
+          "rel:5",
+          "rel:6"
+        ]
+      },
+      {
+        "check": "UI touches data directly",
+        "message": "POST api/catalog/items writes Product with no service in between",
+        "penalty": 5,
+        "elements": [
+          "api:POST api/catalog/items",
+          "do:SampleShop.Data.Entities.Product"
+        ],
+        "relationships": [
+          "rel:13"
+        ]
+      },
+      {
+        "check": "UI touches data directly",
+        "message": "OrdersController.Count reads Order with no service in between",
+        "penalty": 5,
+        "elements": [
+          "api:GET api/orders/count",
+          "do:SampleShop.Data.Entities.Order"
+        ],
+        "relationships": [
+          "rel:16"
+        ]
+      },
+      {
+        "check": "Orphan element",
+        "message": "OrderService.NeverCalled is private and never called",
+        "penalty": 1,
+        "elements": [
+          "fn:SampleShop.Api.Services.OrderService.NeverCalled"
+        ],
+        "relationships": []
+      }
+    ]
+  }
+}

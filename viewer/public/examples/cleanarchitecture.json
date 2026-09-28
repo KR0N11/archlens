@@ -1,0 +1,3559 @@
+{
+  "repo": "github.com/jasontaylordev/CleanArchitecture",
+  "commit": "5353a9edae000d576eade1a4f2c0d72d3b1c1785",
+  "analyzedAt": "2026-09-28T16:15:00.818292Z",
+  "elements": [
+    {
+      "id": "cmp:Shared",
+      "type": "ApplicationComponent",
+      "layer": "Application",
+      "name": "Shared",
+      "source": {
+        "file": "src/Shared/Shared.csproj",
+        "line": 1
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cmp:Domain",
+      "type": "ApplicationComponent",
+      "layer": "Application",
+      "name": "Domain",
+      "source": {
+        "file": "src/Domain/Domain.csproj",
+        "line": 1
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cmp:Application",
+      "type": "ApplicationComponent",
+      "layer": "Application",
+      "name": "Application",
+      "source": {
+        "file": "src/Application/Application.csproj",
+        "line": 1
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cmp:Infrastructure",
+      "type": "ApplicationComponent",
+      "layer": "Application",
+      "name": "Infrastructure",
+      "source": {
+        "file": "src/Infrastructure/Infrastructure.csproj",
+        "line": 1
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cmp:ServiceDefaults",
+      "type": "ApplicationComponent",
+      "layer": "Application",
+      "name": "ServiceDefaults",
+      "source": {
+        "file": "src/ServiceDefaults/ServiceDefaults.csproj",
+        "line": 1
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cmp:Web",
+      "type": "ApplicationComponent",
+      "layer": "Application",
+      "name": "Web",
+      "source": {
+        "file": "src/Web/Web.csproj",
+        "line": 1
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cmp:AppHost",
+      "type": "ApplicationComponent",
+      "layer": "Application",
+      "name": "AppHost",
+      "source": {
+        "file": "src/AppHost/AppHost.csproj",
+        "line": 1
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:AspireExtensions",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "AspireExtensions",
+      "parent": "cmp:AppHost",
+      "source": {
+        "file": "src/AppHost/Extensions.cs",
+        "line": 1
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:AspireExtensions.WithAspNetCoreEnvironment",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "AspireExtensions.WithAspNetCoreEnvironment",
+      "parent": "cls:AspireExtensions",
+      "source": {
+        "file": "src/AppHost/Extensions.cs",
+        "line": 3
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.Common.Behaviours.AuthorizationBehaviour\u003CTRequest, TResponse\u003E",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "AuthorizationBehaviour",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/Common/Behaviours/AuthorizationBehaviour.cs",
+        "line": 8
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.Common.Behaviours.AuthorizationBehaviour\u003CTRequest, TResponse\u003E.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "AuthorizationBehaviour.Handle",
+      "parent": "cls:CleanArchitecture.Application.Common.Behaviours.AuthorizationBehaviour\u003CTRequest, TResponse\u003E",
+      "source": {
+        "file": "src/Application/Common/Behaviours/AuthorizationBehaviour.cs",
+        "line": 22
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.Common.Behaviours.LoggingBehaviour\u003CTRequest\u003E",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "LoggingBehaviour",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/Common/Behaviours/LoggingBehaviour.cs",
+        "line": 7
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.Common.Behaviours.LoggingBehaviour\u003CTRequest\u003E.Process",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "LoggingBehaviour.Process",
+      "parent": "cls:CleanArchitecture.Application.Common.Behaviours.LoggingBehaviour\u003CTRequest\u003E",
+      "source": {
+        "file": "src/Application/Common/Behaviours/LoggingBehaviour.cs",
+        "line": 21
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.Common.Behaviours.PerformanceBehaviour\u003CTRequest, TResponse\u003E",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "PerformanceBehaviour",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/Common/Behaviours/PerformanceBehaviour.cs",
+        "line": 7
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.Common.Behaviours.PerformanceBehaviour\u003CTRequest, TResponse\u003E.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "PerformanceBehaviour.Handle",
+      "parent": "cls:CleanArchitecture.Application.Common.Behaviours.PerformanceBehaviour\u003CTRequest, TResponse\u003E",
+      "source": {
+        "file": "src/Application/Common/Behaviours/PerformanceBehaviour.cs",
+        "line": 27
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.Common.Behaviours.UnhandledExceptionBehaviour\u003CTRequest, TResponse\u003E",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "UnhandledExceptionBehaviour",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/Common/Behaviours/UnhandledExceptionBehaviour.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.Common.Behaviours.UnhandledExceptionBehaviour\u003CTRequest, TResponse\u003E.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "UnhandledExceptionBehaviour.Handle",
+      "parent": "cls:CleanArchitecture.Application.Common.Behaviours.UnhandledExceptionBehaviour\u003CTRequest, TResponse\u003E",
+      "source": {
+        "file": "src/Application/Common/Behaviours/UnhandledExceptionBehaviour.cs",
+        "line": 15
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.Common.Behaviours.ValidationBehaviour\u003CTRequest, TResponse\u003E",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "ValidationBehaviour",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/Common/Behaviours/ValidationBehaviour.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.Common.Behaviours.ValidationBehaviour\u003CTRequest, TResponse\u003E.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "ValidationBehaviour.Handle",
+      "parent": "cls:CleanArchitecture.Application.Common.Behaviours.ValidationBehaviour\u003CTRequest, TResponse\u003E",
+      "source": {
+        "file": "src/Application/Common/Behaviours/ValidationBehaviour.cs",
+        "line": 15
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:CleanArchitecture.Application.Common.Models.LookupDto",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "LookupDto",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/Common/Models/LookupDto.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 3,
+      "entitySignals": [
+        "Mostly properties \u002B2",
+        "Data name suffix \u002B1"
+      ],
+      "fields": [
+        {
+          "name": "Id",
+          "type": "int"
+        },
+        {
+          "name": "Title",
+          "type": "string?"
+        }
+      ]
+    },
+    {
+      "id": "do:CleanArchitecture.Application.Common.Models.Result",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "Result",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/Common/Models/Result.cs",
+        "line": 3
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 2,
+      "entitySignals": [
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Succeeded",
+          "type": "bool"
+        },
+        {
+          "name": "Errors",
+          "type": "string[]"
+        }
+      ]
+    },
+    {
+      "id": "do:CleanArchitecture.Application.Common.Security.AuthorizeAttribute",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "AuthorizeAttribute",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/Common/Security/AuthorizeAttribute.cs",
+        "line": 7
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 2,
+      "entitySignals": [
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Roles",
+          "type": "string"
+        },
+        {
+          "name": "Policy",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "id": "do:CleanArchitecture.Application.TodoItems.Commands.CreateTodoItem.CreateTodoItemCommand",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "CreateTodoItemCommand",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoItems/Commands/CreateTodoItem/CreateTodoItem.cs",
+        "line": 6
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityKind": "Dto",
+      "entityScore": 4,
+      "entitySignals": [
+        "Serialized over the wire \u002B2",
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "ListId",
+          "type": "int"
+        },
+        {
+          "name": "Title",
+          "type": "string?"
+        }
+      ]
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.TodoItems.Commands.CreateTodoItem.CreateTodoItemCommandHandler",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "CreateTodoItemCommandHandler",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoItems/Commands/CreateTodoItem/CreateTodoItem.cs",
+        "line": 13
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.TodoItems.Commands.CreateTodoItem.CreateTodoItemCommandHandler.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "CreateTodoItemCommandHandler.Handle",
+      "parent": "cls:CleanArchitecture.Application.TodoItems.Commands.CreateTodoItem.CreateTodoItemCommandHandler",
+      "source": {
+        "file": "src/Application/TodoItems/Commands/CreateTodoItem/CreateTodoItem.cs",
+        "line": 22
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:CleanArchitecture.Application.TodoItems.Commands.DeleteTodoItem.DeleteTodoItemCommand",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "DeleteTodoItemCommand",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoItems/Commands/DeleteTodoItem/DeleteTodoItem.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 2,
+      "entitySignals": [
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Id",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.TodoItems.Commands.DeleteTodoItem.DeleteTodoItemCommandHandler",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "DeleteTodoItemCommandHandler",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoItems/Commands/DeleteTodoItem/DeleteTodoItem.cs",
+        "line": 7
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.TodoItems.Commands.DeleteTodoItem.DeleteTodoItemCommandHandler.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "DeleteTodoItemCommandHandler.Handle",
+      "parent": "cls:CleanArchitecture.Application.TodoItems.Commands.DeleteTodoItem.DeleteTodoItemCommandHandler",
+      "source": {
+        "file": "src/Application/TodoItems/Commands/DeleteTodoItem/DeleteTodoItem.cs",
+        "line": 16
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItem.UpdateTodoItemCommand",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "UpdateTodoItemCommand",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoItems/Commands/UpdateTodoItem/UpdateTodoItem.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityKind": "Dto",
+      "entityScore": 4,
+      "entitySignals": [
+        "Serialized over the wire \u002B2",
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Id",
+          "type": "int"
+        },
+        {
+          "name": "Title",
+          "type": "string?"
+        },
+        {
+          "name": "Done",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItem.UpdateTodoItemCommandHandler",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "UpdateTodoItemCommandHandler",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoItems/Commands/UpdateTodoItem/UpdateTodoItem.cs",
+        "line": 14
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItem.UpdateTodoItemCommandHandler.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "UpdateTodoItemCommandHandler.Handle",
+      "parent": "cls:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItem.UpdateTodoItemCommandHandler",
+      "source": {
+        "file": "src/Application/TodoItems/Commands/UpdateTodoItem/UpdateTodoItem.cs",
+        "line": 23
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItemDetail.UpdateTodoItemDetailCommand",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "UpdateTodoItemDetailCommand",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoItems/Commands/UpdateTodoItemDetail/UpdateTodoItemDetail.cs",
+        "line": 6
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityKind": "Dto",
+      "entityScore": 4,
+      "entitySignals": [
+        "Serialized over the wire \u002B2",
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Id",
+          "type": "int"
+        },
+        {
+          "name": "ListId",
+          "type": "int"
+        },
+        {
+          "name": "Priority",
+          "type": "PriorityLevel"
+        },
+        {
+          "name": "Note",
+          "type": "string?"
+        }
+      ]
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItemDetail.UpdateTodoItemDetailCommandHandler",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "UpdateTodoItemDetailCommandHandler",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoItems/Commands/UpdateTodoItemDetail/UpdateTodoItemDetail.cs",
+        "line": 17
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItemDetail.UpdateTodoItemDetailCommandHandler.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "UpdateTodoItemDetailCommandHandler.Handle",
+      "parent": "cls:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItemDetail.UpdateTodoItemDetailCommandHandler",
+      "source": {
+        "file": "src/Application/TodoItems/Commands/UpdateTodoItemDetail/UpdateTodoItemDetail.cs",
+        "line": 26
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.TodoItems.EventHandlers.LogTodoItemCompleted",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "LogTodoItemCompleted",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoItems/EventHandlers/LogTodoItemCompleted.cs",
+        "line": 6
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.TodoItems.EventHandlers.LogTodoItemCompleted.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "LogTodoItemCompleted.Handle",
+      "parent": "cls:CleanArchitecture.Application.TodoItems.EventHandlers.LogTodoItemCompleted",
+      "source": {
+        "file": "src/Application/TodoItems/EventHandlers/LogTodoItemCompleted.cs",
+        "line": 15
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommand",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "CreateTodoListCommand",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoLists/Commands/CreateTodoList/CreateTodoList.cs",
+        "line": 7
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityKind": "Dto",
+      "entityScore": 4,
+      "entitySignals": [
+        "Serialized over the wire \u002B2",
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Title",
+          "type": "string?"
+        },
+        {
+          "name": "Colour",
+          "type": "string?"
+        }
+      ]
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommandHandler",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "CreateTodoListCommandHandler",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoLists/Commands/CreateTodoList/CreateTodoList.cs",
+        "line": 14
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommandHandler.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "CreateTodoListCommandHandler.Handle",
+      "parent": "cls:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommandHandler",
+      "source": {
+        "file": "src/Application/TodoLists/Commands/CreateTodoList/CreateTodoList.cs",
+        "line": 23
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommandValidator",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "CreateTodoListCommandValidator",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoLists/Commands/CreateTodoList/CreateTodoListCommandValidator.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommandValidator.BeUniqueTitle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "CreateTodoListCommandValidator.BeUniqueTitle",
+      "parent": "cls:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommandValidator",
+      "source": {
+        "file": "src/Application/TodoLists/Commands/CreateTodoList/CreateTodoListCommandValidator.cs",
+        "line": 21
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:CleanArchitecture.Application.TodoLists.Commands.DeleteTodoList.DeleteTodoListCommand",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "DeleteTodoListCommand",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoLists/Commands/DeleteTodoList/DeleteTodoList.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 2,
+      "entitySignals": [
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Id",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.TodoLists.Commands.DeleteTodoList.DeleteTodoListCommandHandler",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "DeleteTodoListCommandHandler",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoLists/Commands/DeleteTodoList/DeleteTodoList.cs",
+        "line": 7
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.TodoLists.Commands.DeleteTodoList.DeleteTodoListCommandHandler.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "DeleteTodoListCommandHandler.Handle",
+      "parent": "cls:CleanArchitecture.Application.TodoLists.Commands.DeleteTodoList.DeleteTodoListCommandHandler",
+      "source": {
+        "file": "src/Application/TodoLists/Commands/DeleteTodoList/DeleteTodoList.cs",
+        "line": 16
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommand",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "UpdateTodoListCommand",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoLists/Commands/UpdateTodoList/UpdateTodoList.cs",
+        "line": 6
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityKind": "Dto",
+      "entityScore": 4,
+      "entitySignals": [
+        "Serialized over the wire \u002B2",
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Id",
+          "type": "int"
+        },
+        {
+          "name": "Title",
+          "type": "string?"
+        },
+        {
+          "name": "Colour",
+          "type": "string?"
+        }
+      ]
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommandHandler",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "UpdateTodoListCommandHandler",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoLists/Commands/UpdateTodoList/UpdateTodoList.cs",
+        "line": 15
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommandHandler.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "UpdateTodoListCommandHandler.Handle",
+      "parent": "cls:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommandHandler",
+      "source": {
+        "file": "src/Application/TodoLists/Commands/UpdateTodoList/UpdateTodoList.cs",
+        "line": 24
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommandValidator",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "UpdateTodoListCommandValidator",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoLists/Commands/UpdateTodoList/UpdateTodoListCommandValidator.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommandValidator.BeUniqueTitle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "UpdateTodoListCommandValidator.BeUniqueTitle",
+      "parent": "cls:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommandValidator",
+      "source": {
+        "file": "src/Application/TodoLists/Commands/UpdateTodoList/UpdateTodoListCommandValidator.cs",
+        "line": 21
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:CleanArchitecture.Application.TodoLists.Queries.GetTodos.ColourDto",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "ColourDto",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoLists/Queries/GetTodos/TodosVm.cs",
+        "line": 14
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 3,
+      "entitySignals": [
+        "Mostly properties \u002B2",
+        "Data name suffix \u002B1"
+      ],
+      "fields": [
+        {
+          "name": "Code",
+          "type": "string"
+        },
+        {
+          "name": "Name",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.TodoLists.Queries.GetTodos.GetTodosQueryHandler",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "GetTodosQueryHandler",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoLists/Queries/GetTodos/GetTodos.cs",
+        "line": 12
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.TodoLists.Queries.GetTodos.GetTodosQueryHandler.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "GetTodosQueryHandler.Handle",
+      "parent": "cls:CleanArchitecture.Application.TodoLists.Queries.GetTodos.GetTodosQueryHandler",
+      "source": {
+        "file": "src/Application/TodoLists/Queries/GetTodos/GetTodos.cs",
+        "line": 23
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:CleanArchitecture.Application.TodoLists.Queries.GetTodos.TodoItemDto",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "TodoItemDto",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoLists/Queries/GetTodos/TodoItemDto.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 3,
+      "entitySignals": [
+        "Mostly properties \u002B2",
+        "Data name suffix \u002B1"
+      ],
+      "fields": [
+        {
+          "name": "Id",
+          "type": "int"
+        },
+        {
+          "name": "ListId",
+          "type": "int"
+        },
+        {
+          "name": "Title",
+          "type": "string?"
+        },
+        {
+          "name": "Done",
+          "type": "bool"
+        },
+        {
+          "name": "Priority",
+          "type": "int"
+        },
+        {
+          "name": "Note",
+          "type": "string?"
+        }
+      ]
+    },
+    {
+      "id": "do:CleanArchitecture.Application.TodoLists.Queries.GetTodos.TodoListDto",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "TodoListDto",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoLists/Queries/GetTodos/TodoListDto.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 3,
+      "entitySignals": [
+        "Mostly properties \u002B2",
+        "Data name suffix \u002B1"
+      ],
+      "fields": [
+        {
+          "name": "Id",
+          "type": "int"
+        },
+        {
+          "name": "Title",
+          "type": "string?"
+        },
+        {
+          "name": "Colour",
+          "type": "string?"
+        },
+        {
+          "name": "Items",
+          "type": "IReadOnlyCollection\u003CTodoItemDto\u003E"
+        }
+      ]
+    },
+    {
+      "id": "do:CleanArchitecture.Application.TodoLists.Queries.GetTodos.TodosVm",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "TodosVm",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/TodoLists/Queries/GetTodos/TodosVm.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityKind": "Dto",
+      "entityScore": 4,
+      "entitySignals": [
+        "Serialized over the wire \u002B2",
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "PriorityLevels",
+          "type": "IReadOnlyCollection\u003CLookupDto\u003E"
+        },
+        {
+          "name": "Colours",
+          "type": "IReadOnlyCollection\u003CColourDto\u003E"
+        },
+        {
+          "name": "Lists",
+          "type": "IReadOnlyCollection\u003CTodoListDto\u003E"
+        }
+      ]
+    },
+    {
+      "id": "cls:CleanArchitecture.Application.WeatherForecasts.Queries.GetWeatherForecasts.GetWeatherForecastsQueryHandler",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "GetWeatherForecastsQueryHandler",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/WeatherForecasts/Queries/GetWeatherForecasts/GetWeatherForecastsQuery.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Application.WeatherForecasts.Queries.GetWeatherForecasts.GetWeatherForecastsQueryHandler.Handle",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "GetWeatherForecastsQueryHandler.Handle",
+      "parent": "cls:CleanArchitecture.Application.WeatherForecasts.Queries.GetWeatherForecasts.GetWeatherForecastsQueryHandler",
+      "source": {
+        "file": "src/Application/WeatherForecasts/Queries/GetWeatherForecasts/GetWeatherForecastsQuery.cs",
+        "line": 13
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:CleanArchitecture.Application.WeatherForecasts.Queries.GetWeatherForecasts.WeatherForecast",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "WeatherForecast",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/WeatherForecasts/Queries/GetWeatherForecasts/WeatherForecast.cs",
+        "line": 3
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityKind": "Dto",
+      "entityScore": 4,
+      "entitySignals": [
+        "Serialized over the wire \u002B2",
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Date",
+          "type": "DateTime"
+        },
+        {
+          "name": "TemperatureC",
+          "type": "int"
+        },
+        {
+          "name": "TemperatureF",
+          "type": "int"
+        },
+        {
+          "name": "Summary",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "id": "do:CleanArchitecture.Domain.Common.BaseAuditableEntity",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "BaseAuditableEntity",
+      "parent": "cmp:Domain",
+      "source": {
+        "file": "src/Domain/Common/BaseAuditableEntity.cs",
+        "line": 3
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 3,
+      "entitySignals": [
+        "Mostly properties \u002B2",
+        "Data name suffix \u002B1"
+      ],
+      "fields": [
+        {
+          "name": "Created",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "CreatedBy",
+          "type": "string?"
+        },
+        {
+          "name": "LastModified",
+          "type": "DateTimeOffset"
+        },
+        {
+          "name": "LastModifiedBy",
+          "type": "string?"
+        }
+      ]
+    },
+    {
+      "id": "cls:CleanArchitecture.Domain.Common.BaseEntity",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "BaseEntity",
+      "parent": "cmp:Domain",
+      "source": {
+        "file": "src/Domain/Common/BaseEntity.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Domain.Common.BaseEntity.AddDomainEvent",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "BaseEntity.AddDomainEvent",
+      "parent": "cls:CleanArchitecture.Domain.Common.BaseEntity",
+      "source": {
+        "file": "src/Domain/Common/BaseEntity.cs",
+        "line": 16
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Domain.Common.BaseEntity.RemoveDomainEvent",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "BaseEntity.RemoveDomainEvent",
+      "parent": "cls:CleanArchitecture.Domain.Common.BaseEntity",
+      "source": {
+        "file": "src/Domain/Common/BaseEntity.cs",
+        "line": 21
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Domain.Common.BaseEntity.ClearDomainEvents",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "BaseEntity.ClearDomainEvents",
+      "parent": "cls:CleanArchitecture.Domain.Common.BaseEntity",
+      "source": {
+        "file": "src/Domain/Common/BaseEntity.cs",
+        "line": 26
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Domain.Common.ValueObject",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "ValueObject",
+      "parent": "cmp:Domain",
+      "source": {
+        "file": "src/Domain/Common/ValueObject.cs",
+        "line": 4
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Domain.Common.ValueObject.EqualOperator",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "ValueObject.EqualOperator",
+      "parent": "cls:CleanArchitecture.Domain.Common.ValueObject",
+      "source": {
+        "file": "src/Domain/Common/ValueObject.cs",
+        "line": 6
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Domain.Common.ValueObject.NotEqualOperator",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "ValueObject.NotEqualOperator",
+      "parent": "cls:CleanArchitecture.Domain.Common.ValueObject",
+      "source": {
+        "file": "src/Domain/Common/ValueObject.cs",
+        "line": 16
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Domain.Common.ValueObject.Equals",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "ValueObject.Equals",
+      "parent": "cls:CleanArchitecture.Domain.Common.ValueObject",
+      "source": {
+        "file": "src/Domain/Common/ValueObject.cs",
+        "line": 23
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Domain.Common.ValueObject.GetHashCode",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "ValueObject.GetHashCode",
+      "parent": "cls:CleanArchitecture.Domain.Common.ValueObject",
+      "source": {
+        "file": "src/Domain/Common/ValueObject.cs",
+        "line": 34
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:CleanArchitecture.Domain.Entities.TodoItem",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "TodoItem",
+      "parent": "cmp:Domain",
+      "source": {
+        "file": "src/Domain/Entities/TodoItem.cs",
+        "line": 3
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 2,
+      "entitySignals": [
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "ListId",
+          "type": "int"
+        },
+        {
+          "name": "Title",
+          "type": "string?"
+        },
+        {
+          "name": "Note",
+          "type": "string?"
+        },
+        {
+          "name": "Priority",
+          "type": "PriorityLevel"
+        },
+        {
+          "name": "Done",
+          "type": "bool"
+        },
+        {
+          "name": "List",
+          "type": "TodoList"
+        }
+      ]
+    },
+    {
+      "id": "do:CleanArchitecture.Domain.Entities.TodoList",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "TodoList",
+      "parent": "cmp:Domain",
+      "source": {
+        "file": "src/Domain/Entities/TodoList.cs",
+        "line": 3
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 2,
+      "entitySignals": [
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Title",
+          "type": "string?"
+        },
+        {
+          "name": "Colour",
+          "type": "Colour"
+        },
+        {
+          "name": "Items",
+          "type": "IList\u003CTodoItem\u003E"
+        }
+      ]
+    },
+    {
+      "id": "do:CleanArchitecture.Domain.Events.TodoItemCompletedEvent",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "TodoItemCompletedEvent",
+      "parent": "cmp:Domain",
+      "source": {
+        "file": "src/Domain/Events/TodoItemCompletedEvent.cs",
+        "line": 3
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 2,
+      "entitySignals": [
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Item",
+          "type": "TodoItem"
+        }
+      ]
+    },
+    {
+      "id": "cls:CleanArchitecture.Domain.ValueObjects.Colour",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "Colour",
+      "parent": "cmp:Domain",
+      "source": {
+        "file": "src/Domain/ValueObjects/Colour.cs",
+        "line": 3
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Domain.ValueObjects.Colour.From",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "Colour.From",
+      "parent": "cls:CleanArchitecture.Domain.ValueObjects.Colour",
+      "source": {
+        "file": "src/Domain/ValueObjects/Colour.cs",
+        "line": 5
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Domain.ValueObjects.Colour.ToString",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "Colour.ToString",
+      "parent": "cls:CleanArchitecture.Domain.ValueObjects.Colour",
+      "source": {
+        "file": "src/Domain/ValueObjects/Colour.cs",
+        "line": 43
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Domain.ValueObjects.Colour.GetEqualityComponents",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "Colour.GetEqualityComponents",
+      "parent": "cls:CleanArchitecture.Domain.ValueObjects.Colour",
+      "source": {
+        "file": "src/Domain/ValueObjects/Colour.cs",
+        "line": 62
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Infrastructure.Data.ApplicationDbContext",
+      "type": "TechnologyService",
+      "layer": "Technology",
+      "name": "ApplicationDbContext",
+      "parent": "cmp:Infrastructure",
+      "source": {
+        "file": "src/Infrastructure/Data/ApplicationDbContext.cs",
+        "line": 10
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Infrastructure.Data.ApplicationDbContextInitialiser",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "ApplicationDbContextInitialiser",
+      "parent": "cmp:Infrastructure",
+      "source": {
+        "file": "src/Infrastructure/Data/ApplicationDbContextInitialiser.cs",
+        "line": 25
+      },
+      "confidence": 0.9,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Data.ApplicationDbContextInitialiser.InitialiseAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "ApplicationDbContextInitialiser.InitialiseAsync",
+      "parent": "cls:CleanArchitecture.Infrastructure.Data.ApplicationDbContextInitialiser",
+      "source": {
+        "file": "src/Infrastructure/Data/ApplicationDbContextInitialiser.cs",
+        "line": 40
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Data.ApplicationDbContextInitialiser.SeedAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "ApplicationDbContextInitialiser.SeedAsync",
+      "parent": "cls:CleanArchitecture.Infrastructure.Data.ApplicationDbContextInitialiser",
+      "source": {
+        "file": "src/Infrastructure/Data/ApplicationDbContextInitialiser.cs",
+        "line": 55
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Data.ApplicationDbContextInitialiser.TrySeedAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "ApplicationDbContextInitialiser.TrySeedAsync",
+      "parent": "cls:CleanArchitecture.Infrastructure.Data.ApplicationDbContextInitialiser",
+      "source": {
+        "file": "src/Infrastructure/Data/ApplicationDbContextInitialiser.cs",
+        "line": 68
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Infrastructure.Data.Configurations.TodoItemConfiguration",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "TodoItemConfiguration",
+      "parent": "cmp:Infrastructure",
+      "source": {
+        "file": "src/Infrastructure/Data/Configurations/TodoItemConfiguration.cs",
+        "line": 7
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Data.Configurations.TodoItemConfiguration.Configure",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "TodoItemConfiguration.Configure",
+      "parent": "cls:CleanArchitecture.Infrastructure.Data.Configurations.TodoItemConfiguration",
+      "source": {
+        "file": "src/Infrastructure/Data/Configurations/TodoItemConfiguration.cs",
+        "line": 9
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Infrastructure.Data.Configurations.TodoListConfiguration",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "TodoListConfiguration",
+      "parent": "cmp:Infrastructure",
+      "source": {
+        "file": "src/Infrastructure/Data/Configurations/TodoListConfiguration.cs",
+        "line": 7
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Data.Configurations.TodoListConfiguration.Configure",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "TodoListConfiguration.Configure",
+      "parent": "cls:CleanArchitecture.Infrastructure.Data.Configurations.TodoListConfiguration",
+      "source": {
+        "file": "src/Infrastructure/Data/Configurations/TodoListConfiguration.cs",
+        "line": 9
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Infrastructure.Data.InitialiserExtensions",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "InitialiserExtensions",
+      "parent": "cmp:Infrastructure",
+      "source": {
+        "file": "src/Infrastructure/Data/ApplicationDbContextInitialiser.cs",
+        "line": 12
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Data.InitialiserExtensions.InitialiseDatabaseAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "InitialiserExtensions.InitialiseDatabaseAsync",
+      "parent": "cls:CleanArchitecture.Infrastructure.Data.InitialiserExtensions",
+      "source": {
+        "file": "src/Infrastructure/Data/ApplicationDbContextInitialiser.cs",
+        "line": 14
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Infrastructure.Data.Interceptors.AuditableEntityInterceptor",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "AuditableEntityInterceptor",
+      "parent": "cmp:Infrastructure",
+      "source": {
+        "file": "src/Infrastructure/Data/Interceptors/AuditableEntityInterceptor.cs",
+        "line": 9
+      },
+      "confidence": 0.9,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.AuditableEntityInterceptor.SavingChanges",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "AuditableEntityInterceptor.SavingChanges",
+      "parent": "cls:CleanArchitecture.Infrastructure.Data.Interceptors.AuditableEntityInterceptor",
+      "source": {
+        "file": "src/Infrastructure/Data/Interceptors/AuditableEntityInterceptor.cs",
+        "line": 22
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "AuditableEntityInterceptor.SavingChangesAsync",
+      "parent": "cls:CleanArchitecture.Infrastructure.Data.Interceptors.AuditableEntityInterceptor",
+      "source": {
+        "file": "src/Infrastructure/Data/Interceptors/AuditableEntityInterceptor.cs",
+        "line": 29
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.AuditableEntityInterceptor.UpdateEntities",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "AuditableEntityInterceptor.UpdateEntities",
+      "parent": "cls:CleanArchitecture.Infrastructure.Data.Interceptors.AuditableEntityInterceptor",
+      "source": {
+        "file": "src/Infrastructure/Data/Interceptors/AuditableEntityInterceptor.cs",
+        "line": 36
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Infrastructure.Data.Interceptors.DispatchDomainEventsInterceptor",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "DispatchDomainEventsInterceptor",
+      "parent": "cmp:Infrastructure",
+      "source": {
+        "file": "src/Infrastructure/Data/Interceptors/DispatchDomainEventsInterceptor.cs",
+        "line": 8
+      },
+      "confidence": 0.9,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChanges",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "DispatchDomainEventsInterceptor.SavingChanges",
+      "parent": "cls:CleanArchitecture.Infrastructure.Data.Interceptors.DispatchDomainEventsInterceptor",
+      "source": {
+        "file": "src/Infrastructure/Data/Interceptors/DispatchDomainEventsInterceptor.cs",
+        "line": 17
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChangesAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "DispatchDomainEventsInterceptor.SavingChangesAsync",
+      "parent": "cls:CleanArchitecture.Infrastructure.Data.Interceptors.DispatchDomainEventsInterceptor",
+      "source": {
+        "file": "src/Infrastructure/Data/Interceptors/DispatchDomainEventsInterceptor.cs",
+        "line": 25
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.DispatchDomainEventsInterceptor.DispatchDomainEvents",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "DispatchDomainEventsInterceptor.DispatchDomainEvents",
+      "parent": "cls:CleanArchitecture.Infrastructure.Data.Interceptors.DispatchDomainEventsInterceptor",
+      "source": {
+        "file": "src/Infrastructure/Data/Interceptors/DispatchDomainEventsInterceptor.cs",
+        "line": 32
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Infrastructure.Data.Interceptors.Extensions",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "Extensions",
+      "parent": "cmp:Infrastructure",
+      "source": {
+        "file": "src/Infrastructure/Data/Interceptors/AuditableEntityInterceptor.cs",
+        "line": 57
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.Extensions.HasChangedOwnedEntities",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "Extensions.HasChangedOwnedEntities",
+      "parent": "cls:CleanArchitecture.Infrastructure.Data.Interceptors.Extensions",
+      "source": {
+        "file": "src/Infrastructure/Data/Interceptors/AuditableEntityInterceptor.cs",
+        "line": 59
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:CleanArchitecture.Infrastructure.Identity.ApplicationUser",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "ApplicationUser",
+      "parent": "cmp:Infrastructure",
+      "source": {
+        "file": "src/Infrastructure/Identity/ApplicationUser.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityKind": "Dto",
+      "entityScore": 2,
+      "entitySignals": [
+        "Serialized over the wire \u002B2"
+      ],
+      "fields": []
+    },
+    {
+      "id": "cls:CleanArchitecture.Infrastructure.Identity.IdentityResultExtensions",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "IdentityResultExtensions",
+      "parent": "cmp:Infrastructure",
+      "source": {
+        "file": "src/Infrastructure/Identity/IdentityResultExtensions.cs",
+        "line": 6
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Identity.IdentityResultExtensions.ToApplicationResult",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "IdentityResultExtensions.ToApplicationResult",
+      "parent": "cls:CleanArchitecture.Infrastructure.Identity.IdentityResultExtensions",
+      "source": {
+        "file": "src/Infrastructure/Identity/IdentityResultExtensions.cs",
+        "line": 8
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Infrastructure.Identity.IdentityService",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "IdentityService",
+      "parent": "cmp:Infrastructure",
+      "source": {
+        "file": "src/Infrastructure/Identity/IdentityService.cs",
+        "line": 9
+      },
+      "confidence": 0.9,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Identity.IdentityService.GetUserNameAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "IdentityService.GetUserNameAsync",
+      "parent": "cls:CleanArchitecture.Infrastructure.Identity.IdentityService",
+      "source": {
+        "file": "src/Infrastructure/Identity/IdentityService.cs",
+        "line": 25
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Identity.IdentityService.CreateUserAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "IdentityService.CreateUserAsync",
+      "parent": "cls:CleanArchitecture.Infrastructure.Identity.IdentityService",
+      "source": {
+        "file": "src/Infrastructure/Identity/IdentityService.cs",
+        "line": 32
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Identity.IdentityService.IsInRoleAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "IdentityService.IsInRoleAsync",
+      "parent": "cls:CleanArchitecture.Infrastructure.Identity.IdentityService",
+      "source": {
+        "file": "src/Infrastructure/Identity/IdentityService.cs",
+        "line": 45
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Identity.IdentityService.AuthorizeAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "IdentityService.AuthorizeAsync",
+      "parent": "cls:CleanArchitecture.Infrastructure.Identity.IdentityService",
+      "source": {
+        "file": "src/Infrastructure/Identity/IdentityService.cs",
+        "line": 52
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Identity.IdentityService.DeleteUserAsync(string)",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "IdentityService.DeleteUserAsync",
+      "parent": "cls:CleanArchitecture.Infrastructure.Identity.IdentityService",
+      "source": {
+        "file": "src/Infrastructure/Identity/IdentityService.cs",
+        "line": 68
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Infrastructure.Identity.IdentityService.DeleteUserAsync(CleanArchitecture.Infrastructure.Identity.ApplicationUser)",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "IdentityService.DeleteUserAsync",
+      "parent": "cls:CleanArchitecture.Infrastructure.Identity.IdentityService",
+      "source": {
+        "file": "src/Infrastructure/Identity/IdentityService.cs",
+        "line": 75
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Web.Endpoints.TodoItems",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "TodoItems",
+      "parent": "cmp:Web",
+      "source": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 9
+      },
+      "confidence": 0.9,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.TodoItems.Map",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "TodoItems.Map",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoItems",
+      "source": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 11
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.TodoItems.CreateTodoItem",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "TodoItems.CreateTodoItem",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoItems",
+      "source": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 23
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.TodoItems.UpdateTodoItem",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "TodoItems.UpdateTodoItem",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoItems",
+      "source": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 32
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.TodoItems.UpdateTodoItemDetail",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "TodoItems.UpdateTodoItemDetail",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoItems",
+      "source": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 44
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.TodoItems.DeleteTodoItem",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "TodoItems.DeleteTodoItem",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoItems",
+      "source": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 55
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Web.Endpoints.TodoLists",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "TodoLists",
+      "parent": "cmp:Web",
+      "source": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 9
+      },
+      "confidence": 0.9,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.TodoLists.Map",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "TodoLists.Map",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoLists",
+      "source": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 11
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.TodoLists.GetTodoLists",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "TodoLists.GetTodoLists",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoLists",
+      "source": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 23
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.TodoLists.CreateTodoList",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "TodoLists.CreateTodoList",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoLists",
+      "source": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 32
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.TodoLists.UpdateTodoList",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "TodoLists.UpdateTodoList",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoLists",
+      "source": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 41
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.TodoLists.DeleteTodoList",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "TodoLists.DeleteTodoList",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoLists",
+      "source": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 52
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Web.Endpoints.Users",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "Users",
+      "parent": "cmp:Web",
+      "source": {
+        "file": "src/Web/Endpoints/Users.cs",
+        "line": 8
+      },
+      "confidence": 0.9,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.Users.Map",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "Users.Map",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.Users",
+      "source": {
+        "file": "src/Web/Endpoints/Users.cs",
+        "line": 10
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.Users.Logout",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "Users.Logout",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.Users",
+      "source": {
+        "file": "src/Web/Endpoints/Users.cs",
+        "line": 19
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Web.Endpoints.WeatherForecasts",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "WeatherForecasts",
+      "parent": "cmp:Web",
+      "source": {
+        "file": "src/Web/Endpoints/WeatherForecasts.cs",
+        "line": 6
+      },
+      "confidence": 0.9,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.WeatherForecasts.Map",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "WeatherForecasts.Map",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.WeatherForecasts",
+      "source": {
+        "file": "src/Web/Endpoints/WeatherForecasts.cs",
+        "line": 8
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Endpoints.WeatherForecasts.GetWeatherForecasts",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "WeatherForecasts.GetWeatherForecasts",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.WeatherForecasts",
+      "source": {
+        "file": "src/Web/Endpoints/WeatherForecasts.cs",
+        "line": 17
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Web.Infrastructure.ApiExceptionOperationTransformer",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "ApiExceptionOperationTransformer",
+      "parent": "cmp:Web",
+      "source": {
+        "file": "src/Web/Infrastructure/ApiExceptionOperationTransformer.cs",
+        "line": 13
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Infrastructure.ApiExceptionOperationTransformer.TransformAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "ApiExceptionOperationTransformer.TransformAsync",
+      "parent": "cls:CleanArchitecture.Web.Infrastructure.ApiExceptionOperationTransformer",
+      "source": {
+        "file": "src/Web/Infrastructure/ApiExceptionOperationTransformer.cs",
+        "line": 15
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Web.Infrastructure.BearerSecuritySchemeTransformer",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "BearerSecuritySchemeTransformer",
+      "parent": "cmp:Web",
+      "source": {
+        "file": "src/Web/Infrastructure/BearerSecuritySchemeTransformer.cs",
+        "line": 12
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Infrastructure.BearerSecuritySchemeTransformer.TransformAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "BearerSecuritySchemeTransformer.TransformAsync",
+      "parent": "cls:CleanArchitecture.Web.Infrastructure.BearerSecuritySchemeTransformer",
+      "source": {
+        "file": "src/Web/Infrastructure/BearerSecuritySchemeTransformer.cs",
+        "line": 14
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "EndpointRouteBuilderExtensions",
+      "parent": "cmp:Web",
+      "source": {
+        "file": "src/Web/Infrastructure/EndpointRouteBuilderExtensions.cs",
+        "line": 17
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapGet",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "EndpointRouteBuilderExtensions.MapGet",
+      "parent": "cls:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions",
+      "source": {
+        "file": "src/Web/Infrastructure/EndpointRouteBuilderExtensions.cs",
+        "line": 20
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapPost",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "EndpointRouteBuilderExtensions.MapPost",
+      "parent": "cls:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions",
+      "source": {
+        "file": "src/Web/Infrastructure/EndpointRouteBuilderExtensions.cs",
+        "line": 29
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapPut",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "EndpointRouteBuilderExtensions.MapPut",
+      "parent": "cls:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions",
+      "source": {
+        "file": "src/Web/Infrastructure/EndpointRouteBuilderExtensions.cs",
+        "line": 38
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapPatch",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "EndpointRouteBuilderExtensions.MapPatch",
+      "parent": "cls:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions",
+      "source": {
+        "file": "src/Web/Infrastructure/EndpointRouteBuilderExtensions.cs",
+        "line": 47
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapDelete",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "EndpointRouteBuilderExtensions.MapDelete",
+      "parent": "cls:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions",
+      "source": {
+        "file": "src/Web/Infrastructure/EndpointRouteBuilderExtensions.cs",
+        "line": 56
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Web.Infrastructure.IdentityApiOperationTransformer",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "IdentityApiOperationTransformer",
+      "parent": "cmp:Web",
+      "source": {
+        "file": "src/Web/Infrastructure/IdentityApiOperationTransformer.cs",
+        "line": 13
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Infrastructure.IdentityApiOperationTransformer.TransformAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "IdentityApiOperationTransformer.TransformAsync",
+      "parent": "cls:CleanArchitecture.Web.Infrastructure.IdentityApiOperationTransformer",
+      "source": {
+        "file": "src/Web/Infrastructure/IdentityApiOperationTransformer.cs",
+        "line": 29
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Web.Infrastructure.MethodInfoExtensions",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "MethodInfoExtensions",
+      "parent": "cmp:Web",
+      "source": {
+        "file": "src/Web/Infrastructure/MethodInfoExtensions.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Infrastructure.MethodInfoExtensions.IsAnonymous",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "MethodInfoExtensions.IsAnonymous",
+      "parent": "cls:CleanArchitecture.Web.Infrastructure.MethodInfoExtensions",
+      "source": {
+        "file": "src/Web/Infrastructure/MethodInfoExtensions.cs",
+        "line": 14
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Infrastructure.MethodInfoExtensions.AnonymousMethod",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "MethodInfoExtensions.AnonymousMethod",
+      "parent": "cls:CleanArchitecture.Web.Infrastructure.MethodInfoExtensions",
+      "source": {
+        "file": "src/Web/Infrastructure/MethodInfoExtensions.cs",
+        "line": 22
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Web.Infrastructure.ProblemDetailsExceptionHandler",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "ProblemDetailsExceptionHandler",
+      "parent": "cmp:Web",
+      "source": {
+        "file": "src/Web/Infrastructure/ProblemDetailsExceptionHandler.cs",
+        "line": 13
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Infrastructure.ProblemDetailsExceptionHandler.TryHandleAsync",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "ProblemDetailsExceptionHandler.TryHandleAsync",
+      "parent": "cls:CleanArchitecture.Web.Infrastructure.ProblemDetailsExceptionHandler",
+      "source": {
+        "file": "src/Web/Infrastructure/ProblemDetailsExceptionHandler.cs",
+        "line": 15
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:CleanArchitecture.Web.Infrastructure.WebApplicationExtensions",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "WebApplicationExtensions",
+      "parent": "cmp:Web",
+      "source": {
+        "file": "src/Web/Infrastructure/WebApplicationExtensions.cs",
+        "line": 5
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:CleanArchitecture.Web.Infrastructure.WebApplicationExtensions.MapEndpoints",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "WebApplicationExtensions.MapEndpoints",
+      "parent": "cls:CleanArchitecture.Web.Infrastructure.WebApplicationExtensions",
+      "source": {
+        "file": "src/Web/Infrastructure/WebApplicationExtensions.cs",
+        "line": 12
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "do:CleanArchitecture.Web.Services.CurrentUser",
+      "type": "DataObject",
+      "layer": "Application",
+      "name": "CurrentUser",
+      "parent": "cmp:Web",
+      "source": {
+        "file": "src/Web/Services/CurrentUser.cs",
+        "line": 7
+      },
+      "confidence": 0.5,
+      "origin": "Rule",
+      "entityScore": 2,
+      "entitySignals": [
+        "Mostly properties \u002B2"
+      ],
+      "fields": [
+        {
+          "name": "Id",
+          "type": "string?"
+        },
+        {
+          "name": "Roles",
+          "type": "List\u003Cstring\u003E?"
+        }
+      ]
+    },
+    {
+      "id": "cls:Microsoft.Extensions.DependencyInjection.DependencyInjection",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "DependencyInjection",
+      "parent": "cmp:Application",
+      "source": {
+        "file": "src/Application/DependencyInjection.cs",
+        "line": 7
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:Microsoft.Extensions.DependencyInjection.DependencyInjection.AddApplicationServices",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "DependencyInjection.AddApplicationServices",
+      "parent": "cls:Microsoft.Extensions.DependencyInjection.DependencyInjection",
+      "source": {
+        "file": "src/Application/DependencyInjection.cs",
+        "line": 9
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "cls:Microsoft.Extensions.Hosting.Extensions",
+      "type": "ApplicationService",
+      "layer": "Application",
+      "name": "Extensions",
+      "parent": "cmp:ServiceDefaults",
+      "source": {
+        "file": "src/ServiceDefaults/Extensions.cs",
+        "line": 16
+      },
+      "confidence": 0.5,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:Microsoft.Extensions.Hosting.Extensions.AddServiceDefaults",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "Extensions.AddServiceDefaults",
+      "parent": "cls:Microsoft.Extensions.Hosting.Extensions",
+      "source": {
+        "file": "src/ServiceDefaults/Extensions.cs",
+        "line": 18
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:Microsoft.Extensions.Hosting.Extensions.ConfigureOpenTelemetry",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "Extensions.ConfigureOpenTelemetry",
+      "parent": "cls:Microsoft.Extensions.Hosting.Extensions",
+      "source": {
+        "file": "src/ServiceDefaults/Extensions.cs",
+        "line": 44
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:Microsoft.Extensions.Hosting.Extensions.AddOpenTelemetryExporters",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "Extensions.AddOpenTelemetryExporters",
+      "parent": "cls:Microsoft.Extensions.Hosting.Extensions",
+      "source": {
+        "file": "src/ServiceDefaults/Extensions.cs",
+        "line": 73
+      },
+      "confidence": 1,
+      "origin": "Rule",
+      "isPrivate": true
+    },
+    {
+      "id": "fn:Microsoft.Extensions.Hosting.Extensions.AddDefaultHealthChecks",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "Extensions.AddDefaultHealthChecks",
+      "parent": "cls:Microsoft.Extensions.Hosting.Extensions",
+      "source": {
+        "file": "src/ServiceDefaults/Extensions.cs",
+        "line": 92
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "fn:Microsoft.Extensions.Hosting.Extensions.MapDefaultEndpoints",
+      "type": "ApplicationFunction",
+      "layer": "Application",
+      "name": "Extensions.MapDefaultEndpoints",
+      "parent": "cls:Microsoft.Extensions.Hosting.Extensions",
+      "source": {
+        "file": "src/ServiceDefaults/Extensions.cs",
+        "line": 101
+      },
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:POST /",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "POST /",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoItems",
+      "source": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 15
+      },
+      "route": "POST /",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:PUT {id}",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "PUT {id}",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoItems",
+      "source": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 16
+      },
+      "route": "PUT {id}",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:PATCH UpdateDetail/{id}",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "PATCH UpdateDetail/{id}",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoItems",
+      "source": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 17
+      },
+      "route": "PATCH UpdateDetail/{id}",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:DELETE {id}",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "DELETE {id}",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoItems",
+      "source": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 18
+      },
+      "route": "DELETE {id}",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:GET /",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "GET /",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoLists",
+      "source": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 15
+      },
+      "route": "GET /",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:POST / #2",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "POST /",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoLists",
+      "source": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 16
+      },
+      "route": "POST /",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:PUT {id} #2",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "PUT {id}",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoLists",
+      "source": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 17
+      },
+      "route": "PUT {id}",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:DELETE {id} #2",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "DELETE {id}",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.TodoLists",
+      "source": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 18
+      },
+      "route": "DELETE {id}",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:POST logout",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "POST logout",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.Users",
+      "source": {
+        "file": "src/Web/Endpoints/Users.cs",
+        "line": 14
+      },
+      "route": "POST logout",
+      "confidence": 1,
+      "origin": "Rule"
+    },
+    {
+      "id": "api:GET / #2",
+      "type": "ApplicationInterface",
+      "layer": "Application",
+      "name": "GET /",
+      "parent": "cls:CleanArchitecture.Web.Endpoints.WeatherForecasts",
+      "source": {
+        "file": "src/Web/Endpoints/WeatherForecasts.cs",
+        "line": 12
+      },
+      "route": "GET /",
+      "confidence": 1,
+      "origin": "Rule"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel:1",
+      "type": "Serving",
+      "from": "api:POST /",
+      "to": "fn:CleanArchitecture.Web.Endpoints.TodoItems.CreateTodoItem",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 15
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:2",
+      "type": "Serving",
+      "from": "api:PUT {id}",
+      "to": "fn:CleanArchitecture.Web.Endpoints.TodoItems.UpdateTodoItem",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 16
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:3",
+      "type": "Serving",
+      "from": "api:PATCH UpdateDetail/{id}",
+      "to": "fn:CleanArchitecture.Web.Endpoints.TodoItems.UpdateTodoItemDetail",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 17
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:4",
+      "type": "Serving",
+      "from": "api:DELETE {id}",
+      "to": "fn:CleanArchitecture.Web.Endpoints.TodoItems.DeleteTodoItem",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 18
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:5",
+      "type": "Serving",
+      "from": "api:GET /",
+      "to": "fn:CleanArchitecture.Web.Endpoints.TodoLists.GetTodoLists",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 15
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:6",
+      "type": "Serving",
+      "from": "api:POST / #2",
+      "to": "fn:CleanArchitecture.Web.Endpoints.TodoLists.CreateTodoList",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 16
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:7",
+      "type": "Serving",
+      "from": "api:PUT {id} #2",
+      "to": "fn:CleanArchitecture.Web.Endpoints.TodoLists.UpdateTodoList",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 17
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:8",
+      "type": "Serving",
+      "from": "api:DELETE {id} #2",
+      "to": "fn:CleanArchitecture.Web.Endpoints.TodoLists.DeleteTodoList",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 18
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:9",
+      "type": "Serving",
+      "from": "api:POST logout",
+      "to": "fn:CleanArchitecture.Web.Endpoints.Users.Logout",
+      "evidence": {
+        "file": "src/Web/Endpoints/Users.cs",
+        "line": 14
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:10",
+      "type": "Serving",
+      "from": "api:GET / #2",
+      "to": "fn:CleanArchitecture.Web.Endpoints.WeatherForecasts.GetWeatherForecasts",
+      "evidence": {
+        "file": "src/Web/Endpoints/WeatherForecasts.cs",
+        "line": 12
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:11",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Application.Common.Behaviours.AuthorizationBehaviour\u003CTRequest, TResponse\u003E.Handle",
+      "to": "fn:CleanArchitecture.Infrastructure.Identity.IdentityService.AuthorizeAsync",
+      "evidence": {
+        "file": "src/Application/Common/Behaviours/AuthorizationBehaviour.cs",
+        "line": 67
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:12",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Application.Common.Behaviours.LoggingBehaviour\u003CTRequest\u003E.Process",
+      "to": "fn:CleanArchitecture.Infrastructure.Identity.IdentityService.GetUserNameAsync",
+      "evidence": {
+        "file": "src/Application/Common/Behaviours/LoggingBehaviour.cs",
+        "line": 29
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:13",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Application.Common.Behaviours.PerformanceBehaviour\u003CTRequest, TResponse\u003E.Handle",
+      "to": "fn:CleanArchitecture.Infrastructure.Identity.IdentityService.GetUserNameAsync",
+      "evidence": {
+        "file": "src/Application/Common/Behaviours/PerformanceBehaviour.cs",
+        "line": 45
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:14",
+      "type": "Access",
+      "from": "fn:CleanArchitecture.Application.TodoItems.Commands.CreateTodoItem.CreateTodoItemCommandHandler.Handle",
+      "to": "do:CleanArchitecture.Domain.Entities.TodoItem",
+      "evidence": {
+        "file": "src/Application/TodoItems/Commands/CreateTodoItem/CreateTodoItem.cs",
+        "line": 31
+      },
+      "access": "Write",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:15",
+      "type": "Access",
+      "from": "fn:CleanArchitecture.Application.TodoItems.Commands.DeleteTodoItem.DeleteTodoItemCommandHandler.Handle",
+      "to": "do:CleanArchitecture.Domain.Entities.TodoItem",
+      "evidence": {
+        "file": "src/Application/TodoItems/Commands/DeleteTodoItem/DeleteTodoItem.cs",
+        "line": 18
+      },
+      "access": "Read",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:16",
+      "type": "Access",
+      "from": "fn:CleanArchitecture.Application.TodoItems.Commands.DeleteTodoItem.DeleteTodoItemCommandHandler.Handle",
+      "to": "do:CleanArchitecture.Domain.Entities.TodoItem",
+      "evidence": {
+        "file": "src/Application/TodoItems/Commands/DeleteTodoItem/DeleteTodoItem.cs",
+        "line": 23
+      },
+      "access": "Write",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:17",
+      "type": "Access",
+      "from": "fn:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItem.UpdateTodoItemCommandHandler.Handle",
+      "to": "do:CleanArchitecture.Domain.Entities.TodoItem",
+      "evidence": {
+        "file": "src/Application/TodoItems/Commands/UpdateTodoItem/UpdateTodoItem.cs",
+        "line": 25
+      },
+      "access": "Read",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:18",
+      "type": "Access",
+      "from": "fn:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItemDetail.UpdateTodoItemDetailCommandHandler.Handle",
+      "to": "do:CleanArchitecture.Domain.Entities.TodoItem",
+      "evidence": {
+        "file": "src/Application/TodoItems/Commands/UpdateTodoItemDetail/UpdateTodoItemDetail.cs",
+        "line": 28
+      },
+      "access": "Read",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:19",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommandHandler.Handle",
+      "to": "fn:CleanArchitecture.Domain.ValueObjects.Colour.From",
+      "evidence": {
+        "file": "src/Application/TodoLists/Commands/CreateTodoList/CreateTodoList.cs",
+        "line": 28
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:20",
+      "type": "Access",
+      "from": "fn:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommandHandler.Handle",
+      "to": "do:CleanArchitecture.Domain.Entities.TodoList",
+      "evidence": {
+        "file": "src/Application/TodoLists/Commands/CreateTodoList/CreateTodoList.cs",
+        "line": 31
+      },
+      "access": "Write",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:21",
+      "type": "Access",
+      "from": "fn:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommandValidator.BeUniqueTitle",
+      "to": "do:CleanArchitecture.Domain.Entities.TodoList",
+      "evidence": {
+        "file": "src/Application/TodoLists/Commands/CreateTodoList/CreateTodoListCommandValidator.cs",
+        "line": 23
+      },
+      "access": "Read",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:22",
+      "type": "Serving",
+      "from": "cls:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommandValidator",
+      "to": "fn:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommandValidator.BeUniqueTitle",
+      "evidence": {
+        "file": "src/Application/TodoLists/Commands/CreateTodoList/CreateTodoListCommandValidator.cs",
+        "line": 16
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:23",
+      "type": "Access",
+      "from": "fn:CleanArchitecture.Application.TodoLists.Commands.DeleteTodoList.DeleteTodoListCommandHandler.Handle",
+      "to": "do:CleanArchitecture.Domain.Entities.TodoList",
+      "evidence": {
+        "file": "src/Application/TodoLists/Commands/DeleteTodoList/DeleteTodoList.cs",
+        "line": 18
+      },
+      "access": "Read",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:24",
+      "type": "Access",
+      "from": "fn:CleanArchitecture.Application.TodoLists.Commands.DeleteTodoList.DeleteTodoListCommandHandler.Handle",
+      "to": "do:CleanArchitecture.Domain.Entities.TodoList",
+      "evidence": {
+        "file": "src/Application/TodoLists/Commands/DeleteTodoList/DeleteTodoList.cs",
+        "line": 24
+      },
+      "access": "Write",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:25",
+      "type": "Access",
+      "from": "fn:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommandHandler.Handle",
+      "to": "do:CleanArchitecture.Domain.Entities.TodoList",
+      "evidence": {
+        "file": "src/Application/TodoLists/Commands/UpdateTodoList/UpdateTodoList.cs",
+        "line": 26
+      },
+      "access": "Read",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:26",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommandHandler.Handle",
+      "to": "fn:CleanArchitecture.Domain.ValueObjects.Colour.From",
+      "evidence": {
+        "file": "src/Application/TodoLists/Commands/UpdateTodoList/UpdateTodoList.cs",
+        "line": 35
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:27",
+      "type": "Access",
+      "from": "fn:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommandValidator.BeUniqueTitle",
+      "to": "do:CleanArchitecture.Domain.Entities.TodoList",
+      "evidence": {
+        "file": "src/Application/TodoLists/Commands/UpdateTodoList/UpdateTodoListCommandValidator.cs",
+        "line": 23
+      },
+      "access": "Read",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:28",
+      "type": "Serving",
+      "from": "cls:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommandValidator",
+      "to": "fn:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommandValidator.BeUniqueTitle",
+      "evidence": {
+        "file": "src/Application/TodoLists/Commands/UpdateTodoList/UpdateTodoListCommandValidator.cs",
+        "line": 16
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:29",
+      "type": "Access",
+      "from": "fn:CleanArchitecture.Application.TodoLists.Queries.GetTodos.GetTodosQueryHandler.Handle",
+      "to": "do:CleanArchitecture.Domain.Entities.TodoList",
+      "evidence": {
+        "file": "src/Application/TodoLists/Queries/GetTodos/GetTodos.cs",
+        "line": 43
+      },
+      "access": "Read",
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:30",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Domain.Common.ValueObject.EqualOperator",
+      "to": "fn:CleanArchitecture.Domain.Common.ValueObject.Equals",
+      "evidence": {
+        "file": "src/Domain/Common/ValueObject.cs",
+        "line": 13
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:31",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Domain.Common.ValueObject.NotEqualOperator",
+      "to": "fn:CleanArchitecture.Domain.Common.ValueObject.EqualOperator",
+      "evidence": {
+        "file": "src/Domain/Common/ValueObject.cs",
+        "line": 18
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:32",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Domain.Common.ValueObject.Equals",
+      "to": "fn:CleanArchitecture.Domain.ValueObjects.Colour.GetEqualityComponents",
+      "evidence": {
+        "file": "src/Domain/Common/ValueObject.cs",
+        "line": 31
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:33",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Domain.Common.ValueObject.GetHashCode",
+      "to": "fn:CleanArchitecture.Domain.ValueObjects.Colour.GetEqualityComponents",
+      "evidence": {
+        "file": "src/Domain/Common/ValueObject.cs",
+        "line": 38
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:34",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Infrastructure.Data.ApplicationDbContextInitialiser.SeedAsync",
+      "to": "fn:CleanArchitecture.Infrastructure.Data.ApplicationDbContextInitialiser.TrySeedAsync",
+      "evidence": {
+        "file": "src/Infrastructure/Data/ApplicationDbContextInitialiser.cs",
+        "line": 59
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:35",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Infrastructure.Data.InitialiserExtensions.InitialiseDatabaseAsync",
+      "to": "fn:CleanArchitecture.Infrastructure.Data.ApplicationDbContextInitialiser.InitialiseAsync",
+      "evidence": {
+        "file": "src/Infrastructure/Data/ApplicationDbContextInitialiser.cs",
+        "line": 20
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:36",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Infrastructure.Data.InitialiserExtensions.InitialiseDatabaseAsync",
+      "to": "fn:CleanArchitecture.Infrastructure.Data.ApplicationDbContextInitialiser.SeedAsync",
+      "evidence": {
+        "file": "src/Infrastructure/Data/ApplicationDbContextInitialiser.cs",
+        "line": 21
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:37",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.AuditableEntityInterceptor.SavingChanges",
+      "to": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.AuditableEntityInterceptor.UpdateEntities",
+      "evidence": {
+        "file": "src/Infrastructure/Data/Interceptors/AuditableEntityInterceptor.cs",
+        "line": 24
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:38",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.AuditableEntityInterceptor.SavingChangesAsync",
+      "to": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.AuditableEntityInterceptor.UpdateEntities",
+      "evidence": {
+        "file": "src/Infrastructure/Data/Interceptors/AuditableEntityInterceptor.cs",
+        "line": 31
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:39",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChanges",
+      "to": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.DispatchDomainEventsInterceptor.DispatchDomainEvents",
+      "evidence": {
+        "file": "src/Infrastructure/Data/Interceptors/DispatchDomainEventsInterceptor.cs",
+        "line": 19
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:40",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.DispatchDomainEventsInterceptor.SavingChangesAsync",
+      "to": "fn:CleanArchitecture.Infrastructure.Data.Interceptors.DispatchDomainEventsInterceptor.DispatchDomainEvents",
+      "evidence": {
+        "file": "src/Infrastructure/Data/Interceptors/DispatchDomainEventsInterceptor.cs",
+        "line": 27
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:41",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Infrastructure.Identity.IdentityService.CreateUserAsync",
+      "to": "fn:CleanArchitecture.Infrastructure.Identity.IdentityResultExtensions.ToApplicationResult",
+      "evidence": {
+        "file": "src/Infrastructure/Identity/IdentityService.cs",
+        "line": 42
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:42",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Infrastructure.Identity.IdentityService.DeleteUserAsync(string)",
+      "to": "fn:CleanArchitecture.Infrastructure.Identity.IdentityService.DeleteUserAsync(CleanArchitecture.Infrastructure.Identity.ApplicationUser)",
+      "evidence": {
+        "file": "src/Infrastructure/Identity/IdentityService.cs",
+        "line": 72
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:43",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Infrastructure.Identity.IdentityService.DeleteUserAsync(CleanArchitecture.Infrastructure.Identity.ApplicationUser)",
+      "to": "fn:CleanArchitecture.Infrastructure.Identity.IdentityResultExtensions.ToApplicationResult",
+      "evidence": {
+        "file": "src/Infrastructure/Identity/IdentityService.cs",
+        "line": 79
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:44",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoItems.Map",
+      "to": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapPost",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 15
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:45",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoItems.Map",
+      "to": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapPut",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 16
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:46",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoItems.Map",
+      "to": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapPatch",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 17
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:47",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoItems.Map",
+      "to": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapDelete",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 18
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:48",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoItems.CreateTodoItem",
+      "to": "fn:CleanArchitecture.Application.TodoItems.Commands.CreateTodoItem.CreateTodoItemCommandHandler.Handle",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 25
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:49",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoItems.UpdateTodoItem",
+      "to": "fn:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItem.UpdateTodoItemCommandHandler.Handle",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 37
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:50",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoItems.UpdateTodoItemDetail",
+      "to": "fn:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItemDetail.UpdateTodoItemDetailCommandHandler.Handle",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 48
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:51",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoItems.DeleteTodoItem",
+      "to": "fn:CleanArchitecture.Application.TodoItems.Commands.DeleteTodoItem.DeleteTodoItemCommandHandler.Handle",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoItems.cs",
+        "line": 57
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:52",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoLists.Map",
+      "to": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapGet",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 15
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:53",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoLists.Map",
+      "to": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapPost",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 16
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:54",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoLists.Map",
+      "to": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapPut",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 17
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:55",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoLists.Map",
+      "to": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapDelete",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 18
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:56",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoLists.GetTodoLists",
+      "to": "fn:CleanArchitecture.Application.TodoLists.Queries.GetTodos.GetTodosQueryHandler.Handle",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 25
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:57",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoLists.CreateTodoList",
+      "to": "fn:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommandHandler.Handle",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 34
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:58",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoLists.UpdateTodoList",
+      "to": "fn:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommandHandler.Handle",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 45
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:59",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.TodoLists.DeleteTodoList",
+      "to": "fn:CleanArchitecture.Application.TodoLists.Commands.DeleteTodoList.DeleteTodoListCommandHandler.Handle",
+      "evidence": {
+        "file": "src/Web/Endpoints/TodoLists.cs",
+        "line": 54
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:60",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.Users.Map",
+      "to": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapPost",
+      "evidence": {
+        "file": "src/Web/Endpoints/Users.cs",
+        "line": 14
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:61",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.WeatherForecasts.Map",
+      "to": "fn:CleanArchitecture.Web.Infrastructure.EndpointRouteBuilderExtensions.MapGet",
+      "evidence": {
+        "file": "src/Web/Endpoints/WeatherForecasts.cs",
+        "line": 12
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:62",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Endpoints.WeatherForecasts.GetWeatherForecasts",
+      "to": "fn:CleanArchitecture.Application.WeatherForecasts.Queries.GetWeatherForecasts.GetWeatherForecastsQueryHandler.Handle",
+      "evidence": {
+        "file": "src/Web/Endpoints/WeatherForecasts.cs",
+        "line": 19
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:63",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Infrastructure.MethodInfoExtensions.AnonymousMethod",
+      "to": "fn:CleanArchitecture.Web.Infrastructure.MethodInfoExtensions.IsAnonymous",
+      "evidence": {
+        "file": "src/Web/Infrastructure/MethodInfoExtensions.cs",
+        "line": 24
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:64",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Infrastructure.WebApplicationExtensions.MapEndpoints",
+      "to": "fn:CleanArchitecture.Web.Endpoints.TodoItems.Map",
+      "evidence": {
+        "file": "src/Web/Infrastructure/WebApplicationExtensions.cs",
+        "line": 24
+      },
+      "confidence": 0.5,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:65",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Infrastructure.WebApplicationExtensions.MapEndpoints",
+      "to": "fn:CleanArchitecture.Web.Endpoints.TodoLists.Map",
+      "evidence": {
+        "file": "src/Web/Infrastructure/WebApplicationExtensions.cs",
+        "line": 24
+      },
+      "confidence": 0.5,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:66",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Infrastructure.WebApplicationExtensions.MapEndpoints",
+      "to": "fn:CleanArchitecture.Web.Endpoints.Users.Map",
+      "evidence": {
+        "file": "src/Web/Infrastructure/WebApplicationExtensions.cs",
+        "line": 24
+      },
+      "confidence": 0.5,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:67",
+      "type": "Serving",
+      "from": "fn:CleanArchitecture.Web.Infrastructure.WebApplicationExtensions.MapEndpoints",
+      "to": "fn:CleanArchitecture.Web.Endpoints.WeatherForecasts.Map",
+      "evidence": {
+        "file": "src/Web/Infrastructure/WebApplicationExtensions.cs",
+        "line": 24
+      },
+      "confidence": 0.5,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:68",
+      "type": "Serving",
+      "from": "fn:Microsoft.Extensions.Hosting.Extensions.AddServiceDefaults",
+      "to": "fn:Microsoft.Extensions.Hosting.Extensions.ConfigureOpenTelemetry",
+      "evidence": {
+        "file": "src/ServiceDefaults/Extensions.cs",
+        "line": 20
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:69",
+      "type": "Serving",
+      "from": "fn:Microsoft.Extensions.Hosting.Extensions.AddServiceDefaults",
+      "to": "fn:Microsoft.Extensions.Hosting.Extensions.AddDefaultHealthChecks",
+      "evidence": {
+        "file": "src/ServiceDefaults/Extensions.cs",
+        "line": 22
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:70",
+      "type": "Serving",
+      "from": "fn:Microsoft.Extensions.Hosting.Extensions.ConfigureOpenTelemetry",
+      "to": "fn:Microsoft.Extensions.Hosting.Extensions.AddOpenTelemetryExporters",
+      "evidence": {
+        "file": "src/ServiceDefaults/Extensions.cs",
+        "line": 68
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:71",
+      "type": "Aggregation",
+      "from": "do:CleanArchitecture.Application.TodoLists.Queries.GetTodos.TodoListDto",
+      "to": "do:CleanArchitecture.Application.TodoLists.Queries.GetTodos.TodoItemDto",
+      "evidence": {
+        "file": "src/Application/TodoLists/Queries/GetTodos/TodoListDto.cs",
+        "line": 18
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:72",
+      "type": "Aggregation",
+      "from": "do:CleanArchitecture.Application.TodoLists.Queries.GetTodos.TodosVm",
+      "to": "do:CleanArchitecture.Application.Common.Models.LookupDto",
+      "evidence": {
+        "file": "src/Application/TodoLists/Queries/GetTodos/TodosVm.cs",
+        "line": 7
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:73",
+      "type": "Aggregation",
+      "from": "do:CleanArchitecture.Application.TodoLists.Queries.GetTodos.TodosVm",
+      "to": "do:CleanArchitecture.Application.TodoLists.Queries.GetTodos.ColourDto",
+      "evidence": {
+        "file": "src/Application/TodoLists/Queries/GetTodos/TodosVm.cs",
+        "line": 9
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:74",
+      "type": "Aggregation",
+      "from": "do:CleanArchitecture.Application.TodoLists.Queries.GetTodos.TodosVm",
+      "to": "do:CleanArchitecture.Application.TodoLists.Queries.GetTodos.TodoListDto",
+      "evidence": {
+        "file": "src/Application/TodoLists/Queries/GetTodos/TodosVm.cs",
+        "line": 11
+      },
+      "confidence": 1,
+      "origin": "Static"
+    },
+    {
+      "id": "rel:75",
+      "type": "Aggregation",
+      "from": "do:CleanArchitecture.Domain.Entities.TodoList",
+      "to": "do:CleanArchitecture.Domain.Entities.TodoItem",
+      "evidence": {
+        "file": "src/Domain/Entities/TodoList.cs",
+        "line": 9
+      },
+      "confidence": 1,
+      "origin": "Static"
+    }
+  ],
+  "views": {
+    "callFlow:api:POST /": {
+      "elements": [
+        "api:POST /",
+        "fn:CleanArchitecture.Web.Endpoints.TodoItems.CreateTodoItem",
+        "fn:CleanArchitecture.Application.TodoItems.Commands.CreateTodoItem.CreateTodoItemCommandHandler.Handle",
+        "do:CleanArchitecture.Domain.Entities.TodoItem"
+      ],
+      "relationships": [
+        "rel:1",
+        "rel:48",
+        "rel:14"
+      ]
+    },
+    "callFlow:api:PUT {id}": {
+      "elements": [
+        "api:PUT {id}",
+        "fn:CleanArchitecture.Web.Endpoints.TodoItems.UpdateTodoItem",
+        "fn:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItem.UpdateTodoItemCommandHandler.Handle",
+        "do:CleanArchitecture.Domain.Entities.TodoItem"
+      ],
+      "relationships": [
+        "rel:2",
+        "rel:49",
+        "rel:17"
+      ]
+    },
+    "callFlow:api:PATCH UpdateDetail/{id}": {
+      "elements": [
+        "api:PATCH UpdateDetail/{id}",
+        "fn:CleanArchitecture.Web.Endpoints.TodoItems.UpdateTodoItemDetail",
+        "fn:CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItemDetail.UpdateTodoItemDetailCommandHandler.Handle",
+        "do:CleanArchitecture.Domain.Entities.TodoItem"
+      ],
+      "relationships": [
+        "rel:3",
+        "rel:50",
+        "rel:18"
+      ]
+    },
+    "callFlow:api:DELETE {id}": {
+      "elements": [
+        "api:DELETE {id}",
+        "fn:CleanArchitecture.Web.Endpoints.TodoItems.DeleteTodoItem",
+        "fn:CleanArchitecture.Application.TodoItems.Commands.DeleteTodoItem.DeleteTodoItemCommandHandler.Handle",
+        "do:CleanArchitecture.Domain.Entities.TodoItem"
+      ],
+      "relationships": [
+        "rel:4",
+        "rel:51",
+        "rel:15",
+        "rel:16"
+      ]
+    },
+    "callFlow:api:GET /": {
+      "elements": [
+        "api:GET /",
+        "fn:CleanArchitecture.Web.Endpoints.TodoLists.GetTodoLists",
+        "fn:CleanArchitecture.Application.TodoLists.Queries.GetTodos.GetTodosQueryHandler.Handle",
+        "do:CleanArchitecture.Domain.Entities.TodoList"
+      ],
+      "relationships": [
+        "rel:5",
+        "rel:56",
+        "rel:29"
+      ]
+    },
+    "callFlow:api:POST / #2": {
+      "elements": [
+        "api:POST / #2",
+        "fn:CleanArchitecture.Web.Endpoints.TodoLists.CreateTodoList",
+        "fn:CleanArchitecture.Application.TodoLists.Commands.CreateTodoList.CreateTodoListCommandHandler.Handle",
+        "fn:CleanArchitecture.Domain.ValueObjects.Colour.From",
+        "do:CleanArchitecture.Domain.Entities.TodoList"
+      ],
+      "relationships": [
+        "rel:6",
+        "rel:57",
+        "rel:19",
+        "rel:20"
+      ]
+    },
+    "callFlow:api:PUT {id} #2": {
+      "elements": [
+        "api:PUT {id} #2",
+        "fn:CleanArchitecture.Web.Endpoints.TodoLists.UpdateTodoList",
+        "fn:CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList.UpdateTodoListCommandHandler.Handle",
+        "do:CleanArchitecture.Domain.Entities.TodoList",
+        "fn:CleanArchitecture.Domain.ValueObjects.Colour.From"
+      ],
+      "relationships": [
+        "rel:7",
+        "rel:58",
+        "rel:25",
+        "rel:26"
+      ]
+    },
+    "callFlow:api:DELETE {id} #2": {
+      "elements": [
+        "api:DELETE {id} #2",
+        "fn:CleanArchitecture.Web.Endpoints.TodoLists.DeleteTodoList",
+        "fn:CleanArchitecture.Application.TodoLists.Commands.DeleteTodoList.DeleteTodoListCommandHandler.Handle",
+        "do:CleanArchitecture.Domain.Entities.TodoList"
+      ],
+      "relationships": [
+        "rel:8",
+        "rel:59",
+        "rel:23",
+        "rel:24"
+      ]
+    },
+    "callFlow:api:POST logout": {
+      "elements": [
+        "api:POST logout",
+        "fn:CleanArchitecture.Web.Endpoints.Users.Logout"
+      ],
+      "relationships": [
+        "rel:9"
+      ]
+    },
+    "callFlow:api:GET / #2": {
+      "elements": [
+        "api:GET / #2",
+        "fn:CleanArchitecture.Web.Endpoints.WeatherForecasts.GetWeatherForecasts",
+        "fn:CleanArchitecture.Application.WeatherForecasts.Queries.GetWeatherForecasts.GetWeatherForecastsQueryHandler.Handle"
+      ],
+      "relationships": [
+        "rel:10",
+        "rel:62"
+      ]
+    }
+  },
+  "score": {
+    "total": 94,
+    "checks": [
+      {
+        "check": "God class",
+        "message": "TodoItems calls 12 different functions (repo median 1)",
+        "penalty": 3,
+        "elements": [
+          "cls:CleanArchitecture.Web.Endpoints.TodoItems"
+        ],
+        "relationships": []
+      },
+      {
+        "check": "God class",
+        "message": "TodoLists calls 12 different functions (repo median 1)",
+        "penalty": 3,
+        "elements": [
+          "cls:CleanArchitecture.Web.Endpoints.TodoLists"
+        ],
+        "relationships": []
+      }
+    ]
+  }
+}

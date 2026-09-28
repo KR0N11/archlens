@@ -1,0 +1,127 @@
+:root {
+  --ink: #1d1d1f;
+  --muted: #6b6b70;
+  --line: #d8d8dc;
+  --bg: #f6f6f4;
+  --panel: #ffffff;
+  --accent: #1f5fbf;
+  --app: #e8f1fb;
+  --data: #fff6d9;
+  --tech: #e9e9ea;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+button, select, input { font: inherit; }
+.muted { color: var(--muted); }
+
+.app { display: flex; flex-direction: column; height: 100%; }
+
+.topbar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 8px 12px; background: var(--panel); border-bottom: 1px solid var(--line);
+}
+.brand { font-size: 16px; }
+.repo { margin-left: auto; font-size: 12px; }
+.file-button { border: 1px solid var(--line); border-radius: 4px; padding: 2px 8px; cursor: pointer; background: #fafafa; }
+.file-button input { display: none; }
+
+.search { position: relative; }
+.search input { width: 220px; padding: 3px 6px; }
+.search-results {
+  position: absolute; top: 100%; left: 0; z-index: 20; width: 340px; max-height: 360px; overflow: auto;
+  margin: 2px 0 0; padding: 4px 0; list-style: none; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+.search-results button { display: block; width: 100%; text-align: left; border: 0; background: none; padding: 4px 10px; cursor: pointer; }
+.search-results button:hover { background: var(--app); }
+
+.error { background: #fde8e8; color: #8a1c1c; padding: 6px 12px; }
+.empty { display: grid; place-items: center; height: 100%; color: var(--muted); }
+
+.tabs { display: flex; gap: 2px; padding: 6px 12px 0; background: var(--panel); border-bottom: 1px solid var(--line); }
+.tabs button { border: 1px solid transparent; border-bottom: 0; background: none; padding: 6px 12px; cursor: pointer; border-radius: 4px 4px 0 0; }
+.tabs button.active { border-color: var(--line); background: var(--bg); font-weight: 600; margin-bottom: -1px; }
+
+.main { flex: 1; display: flex; min-height: 0; }
+.view { flex: 1; min-width: 0; position: relative; }
+.canvas { position: absolute; inset: 0; }
+.split { position: absolute; inset: 0; display: grid; grid-template-rows: 60% 40%; }
+.split > .canvas, .split-top > .canvas { position: relative; }
+.split-top { position: absolute; inset: 0; display: grid; grid-template-rows: auto 1fr; }
+.toolbar { display: flex; gap: 12px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--line); background: var(--panel); }
+.toolbar select { max-width: 520px; }
+
+/* Boxes. One class per element type, so the legend reuses the exact same look. */
+.node {
+  width: 220px; min-height: 100%; padding: 6px 10px; background: var(--app);
+  border: 1.5px solid #7a9cc6; border-radius: 3px; font-size: 12px; cursor: pointer;
+}
+.node.selected, .group-frame.selected { outline: 3px solid var(--accent); outline-offset: 2px; }
+.node-head { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .03em; }
+.node-toggle { margin-left: auto; font-weight: 700; color: var(--accent); font-size: 14px; }
+.node-label { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.node-route { font-family: ui-monospace, monospace; font-size: 11px; color: #34495e; }
+.node-fields { list-style: none; margin: 4px 0 0; padding: 4px 0 0; border-top: 1px solid #e0cf96; font-family: ui-monospace, monospace; font-size: 11px; }
+.node-fields span { color: var(--muted); }
+.iface-dot { width: 9px; height: 9px; border: 1.5px solid #4a6e99; border-radius: 50%; display: inline-block; }
+
+.t-ApplicationComponent { background: #d4e5f7; border-width: 2px; }
+.t-ApplicationFunction, .t-ApplicationService { border-radius: 10px; }
+.t-DataObject { background: var(--data); border-color: #b89b3c; padding-top: 0; }
+.t-DataObject .node-head { background: #f1dfa2; margin: 0 -10px 4px; padding: 3px 10px; }
+.t-ExternalSystem { background: #fff; border-style: dashed; border-color: #666; }
+.t-TechnologyService, .t-Node { background: var(--tech); border-color: #999; border-radius: 10px; }
+.t-BusinessActor { background: #fdf0d5; border-color: #c9a15a; }
+.node.guess { border-style: dashed; border-color: #c0392b; }
+
+.group-frame { width: 100%; height: 100%; border: 2px solid #7a9cc6; border-radius: 4px; background: rgba(212,229,247,.35); cursor: pointer; }
+.group-title { display: flex; padding: 8px 12px; font-weight: 600; }
+
+.legend {
+  position: absolute; left: 12px; bottom: 12px; z-index: 5; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 4px; padding: 6px 10px; font-size: 12px; max-width: 320px;
+}
+.legend summary { cursor: pointer; font-weight: 600; }
+.legend-row { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+.legend .swatch { width: 28px; min-height: 14px; height: 14px; padding: 0; }
+
+.crud { overflow: auto; padding: 8px 12px; border-top: 1px solid var(--line); background: var(--panel); }
+.crud h3 { margin: 4px 0 8px; font-size: 14px; }
+.crud table { border-collapse: collapse; font-size: 12px; }
+.crud th, .crud td { border: 1px solid var(--line); padding: 3px 8px; text-align: left; }
+.crud-cell { text-align: center !important; font-family: ui-monospace, monospace; }
+.row-selected { background: var(--app); }
+
+.link { border: 0; background: none; padding: 0; color: var(--accent); cursor: pointer; text-align: left; }
+.link:hover { text-decoration: underline; }
+
+.panel { width: 360px; overflow: auto; padding: 12px 16px; background: var(--panel); border-left: 1px solid var(--line); position: relative; }
+.panel h2 { margin: 2px 0 6px; font-size: 17px; word-break: break-word; }
+.panel h4 { margin: 14px 0 4px; font-size: 12px; text-transform: uppercase; color: var(--muted); }
+.panel dl { display: grid; grid-template-columns: 90px 1fr; gap: 4px 8px; margin: 10px 0; }
+.panel dt { color: var(--muted); }
+.panel dd { margin: 0; word-break: break-all; }
+.panel .close { position: absolute; right: 8px; top: 6px; border: 0; background: none; font-size: 20px; cursor: pointer; }
+.route { font-family: ui-monospace, monospace; }
+.purpose { font-style: italic; }
+.arrows, .signals { list-style: none; margin: 0; padding: 0; font-size: 12px; }
+.arrows li { padding: 3px 0; border-bottom: 1px solid #f0f0f0; }
+.evidence { font-size: 11px; color: var(--muted); word-break: break-all; }
+
+.score { padding: 16px 20px; overflow: auto; position: absolute; inset: 0; }
+.score-number { font-size: 40px; font-weight: 700; }
+.findings { list-style: none; padding: 0; }
+.findings li { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; margin-bottom: 8px; }
+.penalty { color: #b03a2e; font-weight: 600; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.chip { border: 1px solid var(--line); border-radius: 12px; background: #fafafa; padding: 1px 10px; cursor: pointer; font-size: 12px; }
+
+/* Arrows attach to the handles, but nobody drags new arrows here, so the dots are just noise. */
+.react-flow__handle { opacity: 0; pointer-events: none; }
+/* React Flow draws its own selection ring; ours is the outline on the box itself. */
+.react-flow__node.selected, .react-flow__node:focus { box-shadow: none; outline: none; }

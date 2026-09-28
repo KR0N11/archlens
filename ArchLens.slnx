@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ArchLens.Cli/ArchLens.Cli.csproj" />
+    <Project Path="src/ArchLens.Core/ArchLens.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ArchLens.Tests/ArchLens.Tests.csproj" />
+  </Folder>
+</Solution>
