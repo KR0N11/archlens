@@ -1,7 +1,7 @@
 # ArchLens
 
-Point it at a C# repo and get an ArchiMate-style architecture diagram: projects, services, HTTP entry points,
-data entities, outside systems, and the arrows between them. No manual modeling.
+Point it at a C# or Python repo and get an ArchiMate-style architecture diagram: projects, services, HTTP
+entry points, data entities, outside systems, and the arrows between them. No manual modeling.
 
 ![Call flow for POST api/orders in dotnet/eShop](docs/callflow-eshop.jpg)
 
@@ -11,7 +11,7 @@ and line that proves it.
 
 ## Quick start
 
-Needs the .NET 10 SDK, Node 20+ and git.
+Needs the .NET 10 SDK, Node 20+ and git. Python repos also need Python 3.10+ on the PATH (standard library only).
 
 ```bash
 # terminal 1: the API (clones and analyzes repos), http://localhost:5080
@@ -83,6 +83,46 @@ Architecture score checks: class cycles (Tarjan SCC), entry points touching stor
 (over 3x the median call count and at least 10), private functions nothing calls, entities written from 3+
 projects. Each check is capped so one problem can't zero the score.
 
+## Python repos
+
+A repo with no `.csproj` and some `.py` files goes to the Python front end (`python/archlens_py`, standard
+library `ast` only; nothing in the analyzed repo is imported or run). It prints the same boxes and arrows as JSON;
+the C# side reads them and runs the same tracer and score, so the API, the viewer and the CLI work unchanged.
+
+| Code | Becomes |
+|---|---|
+| Top-level package (namespace sub-packages without `__init__.py` included) | Application Component |
+| FastAPI `@router.get(...)`, Flask `@bp.route(...)`, full path from `APIRouter(prefix=)`, `include_router(prefix=)`, `register_blueprint(url_prefix=)`; one handler serving GET and POST is one box, `GET,POST path` | Application Interface |
+| Module with routes | Application Interface (the "controller") |
+| Module with functions, class with logic | Application Service (0.9 if returned by a `Depends` provider or subclassing a repo base class, else 0.5) |
+| Function or method with a body | Application Function |
+| Class with entity score >= 5 (2 to 4 = unsure) | Data Object |
+| `requests` / `httpx` / `urlopen` call | External System, named from the URL or the client's `base_url` |
+
+| Arrow | Detected from |
+|---|---|
+| Serving | calls resolved through imports (re-exports followed), `self.x` typed from `__init__` annotations or constructors, parameter annotations, `-> T` return annotations; `Depends(provider)` in a signature or an `Annotated` alias (`SessionDep`); an abstract or ABC method goes to every implementation at 0.5 (1.0 if only one) |
+| Access (read/write) | `select(Order)`, `session.query/get(Order)`, `Order.objects` / `Order.query` managers; `session.add/delete/merge(order)`, `order.status = ...` and a repo method that returns nothing on a stored entity are writes; `Model.model_validate(...)` is a read only when the same function made an HTTP call |
+| Flow | an HTTP call to an External System |
+| Aggregation | `list[OrderLine]` / `Mapped[list["OrderLine"]]` on a data object |
+
+Entity score uses the C# table: ORM mapping (SQLAlchemy `DeclarativeBase` / `declarative_base()` with a table,
+SQLModel `table=True`, Django and Flask-SQLAlchemy models) +5, table created in a migration or `.sql` file +5,
+used in a `*Repository` class or a `crud`/`repository` module +3, Pydantic model or route parameter/response type
++2, 80%+ fields +2, data-ish name suffix +1, logic suffix -5. Exceptions and enums are never data.
+
+Measured the same way as the C# table below (Apple M5, local clone, three runs, identical output each run):
+
+| Repo (commit) | Components | Boxes | Arrows | Entry points | Time |
+|---|---|---|---|---|---|
+| fastapi/full-stack-fastapi-template (`f27b472`) | 3 | 96 | 103 | 23 | 0.1 s |
+| miguelgrinberg/microblog (`a975ef6`, Flask) | 2 | 99 | 51 | 27 | 0.1 s |
+| netflix/dispatch (`dd2837e`, 717 .py files) | 3 | 2,726 | 3,775 | 290 | 0.8 s |
+
+**Spot check, not a graded benchmark.** 30 random arrows from the final version (10 per repo, seed 99) were each
+opened at their evidence line: all 30 were real calls or accesses. An earlier 40-arrow sample found three wrong
+ones, which led to two fixes (Flask multi-method routes as one box; a root `tests.py` counted as tests).
+
 ## Results on real repos
 
 Measured on an Apple M5 laptop, local clone, `--enrich` off.
@@ -101,12 +141,16 @@ not been graded yet. Two development samples (seed 1) were used to find bugs; se
 
 ## Tests
 
-- `tests/ArchLens.Tests` (xUnit, 61 tests): the SampleShop fixture (`samples/SampleShop`) is a small app written
+- `tests/ArchLens.Tests` (xUnit, 67 tests): the SampleShop fixture (`samples/SampleShop`) is a small app written
   for this. Its expected arrows, routes and entity scores are worked out by hand from its source and compared as
   sets, so an extra arrow fails the test as much as a missing one. Also: interface/DI/abstract/MediatR
   resolution on tiny generated repos, Tarjan, the tracer, score caps, the LLM step with a fake client, and the
   web API end to end in memory (a fake git source copies the fixture instead of cloning).
-- `viewer` (vitest, 29 tests): the pure logic in `viewer/src/lib`.
+- `tests/ArchLens.Tests` also runs the Python front end on `samples/SamplePyShop` (6 tests): language detection,
+  the JSON hand-off, the traced flow and the score (79, the same checks as SampleShop).
+- `python/tests` (pytest, 21 tests): the SamplePyShop fixture (FastAPI, SQLAlchemy, Pydantic, httpx, an ABC with
+  two implementations, an Alembic migration) with its exact arrow set worked out by hand, like SampleShop.
+- `viewer` (vitest, 37 tests): the pure logic in `viewer/src/lib`.
 
 ## Known limitations
 
@@ -119,7 +163,11 @@ not been graded yet. Two development samples (seed 1) were used to find bugs; se
 - The LLM step (`--enrich`) is unit tested with a fake client only. It has not yet been run against the live
   API. It uses the official Anthropic C# SDK with a JSON schema whose `type` field is an enum of the 10 box
   types; a refusal or cut-off answer keeps the rule's label.
-- C# only. The design doc's TypeScript support, Infrastructure view, Postgres storage, Server-Sent Events
+- Python: types are only known from annotations, constructors and `-> T` returns, so calls on untyped variables
+  are not drawn (precision over recall). Django URLconfs, class-based views, Celery task dispatch and dynamic
+  `getattr` calls are not followed. Route prefixes that are only known at runtime show as `{expression}`.
+  `--enrich` is C#-only for now (the LLM step reads Roslyn's index).
+- The design doc's TypeScript support, Infrastructure view, Postgres storage, Server-Sent Events
   progress (the viewer polls instead), PNG/SVG export and CI score are not built. Jobs and the cache are in memory.
 
 ## Deliberate differences from the design doc

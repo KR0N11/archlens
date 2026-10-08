@@ -5,3 +5,5 @@ viewer/dist/
 /graph.json
 /edge-sample.md
 .DS_Store
+__pycache__/
+.pytest_cache/

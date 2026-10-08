@@ -34,7 +34,7 @@ export function Landing({ examples, apiUp, initialRepo, error, onAnalyze, onExam
           <LogoMark size={44} />
         </div>
         <h1>ArchLens</h1>
-        <p className="tagline">Paste a C# repo. Get its architecture, with the line of code behind every arrow.</p>
+        <p className="tagline">Paste a C# or Python repo. Get its architecture, with the line of code behind every arrow.</p>
 
         <form
           className="repo-form"
@@ -47,7 +47,7 @@ export function Landing({ examples, apiUp, initialRepo, error, onAnalyze, onExam
             className={invalid ? 'invalid' : ''}
             autoFocus
             spellCheck={false}
-            placeholder="Paste a GitHub repo URL (C# / .NET)"
+            placeholder="Paste a GitHub repo URL (C# / .NET or Python)"
             value={input}
             onChange={(e) => {
               setInput(e.target.value)

@@ -54,11 +54,11 @@ public class AnalysisWorker : BackgroundService
         var clonedCommit = _source.Clone(job.RepoUrl, dir);
         try
         {
-            _store.Update(job = job with { Status = AnalysisStatus.Analyzing, Message = "Building the graph with Roslyn", Commit = clonedCommit });
+            _store.Update(job = job with { Status = AnalysisStatus.Analyzing, Message = "Building the graph", Commit = clonedCommit });
             var graph = await Analyzer.AnalyzeAsync(dir, job.RepoUrl, clonedCommit, new AnalyzerOptions(), ct: ct);
-            // A repo with no .csproj parses to nothing; say so instead of showing an empty canvas.
+            // A repo with no .csproj and no .py parses to nothing; say so instead of showing an empty canvas.
             if (graph.Elements.Count == 0)
-                throw new InvalidOperationException("No C# projects (.csproj) were found in this repository.");
+                throw new InvalidOperationException("No C# projects (.csproj) or Python code (.py) were found in this repository.");
             _store.Cache(job.RepoUrl, clonedCommit, graph);
             _store.SetGraph(job.Id, graph);
             _store.Update(job with
